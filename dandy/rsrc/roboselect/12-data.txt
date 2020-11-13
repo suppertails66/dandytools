@@ -1,0 +1,22 @@
+[Settings]
+format=2
+formatFlag1=0
+# line number
+#gpuDstHi=0x160
+# halfword offset
+#gpuDstLo=0x390
+# line number
+gpuDstHi=0x1EC
+# halfword offset
+gpuDstLo=0x3A0
+grayscale=1
+hasPalette=0
+headerUnk=16
+headerUnk2=12
+headerUnk3=0
+paletteUnk0=0
+paletteUnk2=0
+paletteUnk3=0
+semiTransparency=0
+transparency=1
+

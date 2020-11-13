@@ -1,0 +1,25 @@
+# "budget"
+
+[Settings]
+format=1
+formatFlag1=0
+#gpuDstHi=476
+#gpuDstLo=928
+#gpuDstHi=0x1CC
+#gpuDstLo=0x3A0
+# = 0xE6740
+# so presumably 0x3A0 is an offset in halfwords (x?)
+# E6000 / 1CC = 800 = line select (y)
+gpuDstHi=0x190
+gpuDstLo=0x3C0
+grayscale=0
+hasPalette=1
+headerUnk=16
+headerUnk2=44
+headerUnk3=0
+paletteUnk0=17761216
+paletteUnk2=16
+paletteUnk3=1
+semiTransparency=0
+transparency=1
+

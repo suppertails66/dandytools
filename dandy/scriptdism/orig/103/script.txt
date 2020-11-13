@@ -1,0 +1,348 @@
+
+:init1
+
+:MISSION_EX
+  op058            0x60 0x1
+  openTextBox      
+  dlog             <TEXT_0x65AC>
+  closeTextBox     
+  op059            
+
+:cost_test
+  op08a            0x4 0xB0
+  op08b            0x4 0xB1
+  wait_089         
+  op08e            0x0 0x4
+  initCharTexBufs  0x10 0xFF
+  charSeqToVram    0xB0 0x0 <TEXT_0x667C>
+  charSeqToVram    0x0 0x10 <TEXT_0x6685>
+  charSeqToVram    0x0 0x20 <TEXT_0x66A6>
+  charSeqToVram    0x0 0x30 <TEXT_0x66CB>
+  charSeqToVram    0x0 0x40 <TEXT_0x66EC>
+  charSeqToVram    0x0 0x50 <TEXT_0x6711>
+  charSeqToVram    0x0 0x60 <TEXT_0x6738>
+  charSeqToVram    0x0 0x70 <TEXT_0x6753>
+  charSeqToVram    0x0 0x80 <TEXT_0x6776>
+  charSeqToVram    0x0 0x90 <TEXT_0x6797>
+  charSeqToVram    0x0 0xA0 <TEXT_0x67BE>
+  charSeqToVram    0x0 0xB0 <TEXT_0x67E5>
+  charSeqToVram    0x0 0xC0 <TEXT_0x6806>
+  charSeqToVram    0x0 0xD0 <TEXT_0x6829>
+  charSeqToVram    0x0 0xE0 <TEXT_0x684A>
+  op0c5            0x0 0x0
+  op060            
+  op091            0x0
+  op08f            0x0
+  op08c            0x4
+  op08d            0x4
+  CONDITIONAL      0x1 0x0 0xFE 0x1 0x1 0x0 0x1 0x0 0x0
+  jumpToLabel      &"RETRY_GAME"
+  ENDBLOCK         
+  op0e9            0x61 0x0
+
+:RETRY_GAME
+  op08a            0x4 0x0
+  op08b            0x4 0x1
+  wait_089         
+  op08e            0x0 0x4
+  op09b            
+  op09c            
+  op091            0x0
+  op08f            0x0
+  op08c            0x4
+  op08d            0x4
+  CONDITIONAL      0x1 0x0 0xFE 0x1 0x1 0x0 0x0 0x0 0x1
+  jumpToLabel      &"MISSION_EX"
+  ENDBLOCK         
+  CONDITIONAL      0x1 0x0 0xFE 0x1 0x1 0x0 0x1 0x0 0x1
+  op096            
+  ENDBLOCK         
+  CONDITIONAL      0x1 0x0 0xFE 0x1 0x1 0x0 0x2 0x0 0x1
+  op044            0xD
+  ENDBLOCK         
+  jumpToLabel      &"cost_test"
+  queueLoad_0be    0x0 0x1E
+  wait_089         
+  op015            0x0 0x340 0x100 0x140 0x1FE
+  op016            0x0
+  setBgPic         0x1 0x340 0x100 0x140 0x1FE 0x140 0xF0 0x1
+  setUpVoice       0x0 "VOICE.XAP" 0x44EE 0x250 0xE
+  setUpVoice       0x1 "VOICE.XAP" 0x44FF 0x460 0xF
+  dlog             <TEXT_0x693C>
+  dlog             <TEXT_0x6A0D>
+  dlog             <TEXT_0x6A42>
+  dlog             <TEXT_0x6A47>
+  setBodyPortrait  0x1 0x0 0x0 0x4A
+  dlog             <TEXT_0x6A54>
+  setPortrait      0x0
+  dlog             <TEXT_0x6A5C>
+  setPortrait      0x1
+  dlog             <TEXT_0x6A64>
+  setPortrait      0x2
+  op03e            0x0 0x0 0x1 0x0 0x0 0x2
+  dlog             <TEXT_0x6A76>
+  op0bd            0x0
+  op07b            0x1 0x1 0x1 0x0 0x0 0x1
+  dlog             <TEXT_0x6A88>
+  op0bd            0x1
+  dlog             <TEXT_0x6A90>
+  op0a2            0x0 0x1
+  op01d            0x1 0xA0 0x0
+  op07b            0x1 0x0 0x1 0x0 0x0 0x0
+  wait_0bb         0x1
+  op0c1            0x0
+  op0c1            0x1
+
+:start
+
+:A_PL_00
+  queueLoad_0be    0x0 0x1D
+  wait_089         
+  op015            0x0 0x140 0x100 0x140 0x1FF
+  op016            0x0
+  queueLoad_0be    0x0 0x1E
+  wait_089         
+  op015            0x0 0x340 0x100 0x140 0x1FE
+  op016            0x0
+  setBgPic         0x0 0x140 0x100 0x140 0x1FF 0x140 0xF0 0x1
+  setBgPic         0x1 0x340 0x100 0x140 0x1FE 0x140 0xF0 0x1
+  op0b6            0x0 0x22
+  wait_089         
+  op0b9            0x0 0x23
+  wait_089         
+  op0b6            0x1 0x8
+  wait_089         
+  op0b6            0x2 0x0
+  wait_089         
+  op0b9            0x1 0x1
+  wait_089         
+  fadeIn           0x1000 0x0 0x400 0x400
+  delay            0x40
+  openTextBox      
+  dlog             <TEXT_0x6B2E>
+  closeTextBox     
+  fadeOut          0x0 0x0 0x400 0x400
+  delay            0x40
+  fadeIn           0x1 0x0 0x400 0x400
+  delay            0x40
+  openTextBox      
+  op0b8            0x0 0x0 0xA0 0x4A
+  op0ba            0x0 0x0 0x0 0x0 0x0 0x0
+  wait_0bb         0x0
+  op0bc            0x0 0x0
+  dlog             <TEXT_0x6C26>
+  op0b8            0x1 0x1 0x18 0x20
+  op0bc            0x1 0x0
+  dlog             <TEXT_0x6C5B>
+  dlog             <TEXT_0x6CAE>
+  op0ba            0x1 0x1 0x2 0x0 0x0 0x0
+  wait_0bb         0x1
+  dlog             <TEXT_0x6CC8>
+  dlog             <TEXT_0x6D31>
+  closeTextBox     
+  op0c2            0x0 0x0
+  op0c2            0x1 0x0
+  op01b            
+  op0c1            0x0
+  op0c1            0x1
+  op01c            
+  op0bf            0x0
+  op0bf            0x1
+  op0bf            0x2
+  op0c0            0x0
+  op0c0            0x1
+  fadeOut          0x1 0x0 0x400 0x400
+  delay            0x40
+  op059            
+  op00e            0x0 0x2
+  wait_089         
+  op015            0x0 0x140 0x0 0x140 0xF0
+  op016            0x0
+  setBgPic         0x0 0x140 0x0 0x140 0xF0 0x110 0x30 0x0
+  fadeIn           0x1800 0xC400 0x0 0x400
+  delay            0x40
+
+:G_PL_01
+  op058            0x60 0x1
+  openTextBox      
+  dlog             <TEXT_0x6DAD>
+  dlog             <TEXT_0x6EB0>
+  dlog             <TEXT_0x6F01>
+  closeTextBox     
+  openTextBox      
+  dlog             <TEXT_0x6F22>
+  closeTextBox     
+  openTextBox      
+  dlog             <TEXT_0x6FE1>
+  dlog             <TEXT_0x7024>
+  dlog             <TEXT_0x703D>
+  dlog             <TEXT_0x712C>
+  dlog             <TEXT_0x7143>
+  dlog             <TEXT_0x724C>
+  dlog             <TEXT_0x72AD>
+  closeTextBox     
+  openTextBox      
+  dlog             <TEXT_0x7356>
+  closeTextBox     
+  openTextBox      
+  dlog             <TEXT_0x743B>
+  closeTextBox     
+  openTextBox      
+  dlog             <TEXT_0x74A8>
+  closeTextBox     
+  openTextBox      
+  dlog             <TEXT_0x7541>
+  dlog             <TEXT_0x7618>
+  closeTextBox     
+  openTextBox      
+  dlog             <TEXT_0x7651>
+  dlog             <TEXT_0x767E>
+  dlog             <TEXT_0x7693>
+  dlog             <TEXT_0x76C2>
+  dlog             <TEXT_0x76D5>
+  closeTextBox     
+  op056            
+  op03f            0x0
+  op03f            0x1
+  op03f            0x2
+  op054            0xFF01 0x40
+  delay            0x40
+  op04d            0x1 0x4
+  op06f            0x1 0x1 "ENEM"
+  op057            0x1 0x4 0x0
+  op0a6            0x0 "GOOD_END" 0x1
+  op0a6            0x1 "BAD_END" 0x0
+  op057            0x0 0x1 0x0
+  op055            0x1
+  op095            "MAMO"
+  op040            0x0 "ROBO"
+  op0ae            
+  op054            0x0 0x40
+  delay            0x40
+  stopScript       
+
+:GOOD_END
+  op056            
+  op098            
+  wait_099         
+  op085            
+  op046            
+  jumpToLabel      &"F_PL_13"
+
+:BAD_END
+  op056            
+  op097            
+  wait_099         
+  op085            
+  op046            
+  op08a            0x4 0x0
+  op08b            0x4 0x1
+  wait_089         
+  op08e            0x0 0x4
+  op09b            
+  op09c            
+  op091            0x0
+  op08f            0x0
+  op08c            0x4
+  op08d            0x4
+  CONDITIONAL      0x1 0x0 0xFE 0x1 0x1 0x0 0x0 0x0 0x1
+  jumpToLabel      &"MISSION_EX"
+  ENDBLOCK         
+  CONDITIONAL      0x1 0x0 0xFE 0x1 0x1 0x0 0x1 0x0 0x1
+  op096            
+  ENDBLOCK         
+  CONDITIONAL      0x1 0x0 0xFE 0x1 0x1 0x0 0x2 0x0 0x1
+  op044            0xD
+  ENDBLOCK         
+  CONDITIONAL      0x1 0x0 0xFE 0x1 0x1 0x0 0x0 0x0 0x1
+  jumpToLabel      &"MISSION_EX"
+  ENDBLOCK         
+  CONDITIONAL      0x1 0x0 0xFE 0x1 0x1 0x0 0x1 0x0 0x1
+  op042            
+  ENDBLOCK         
+
+:SPESIAL_1
+  op056            
+  openTextBox      
+  dlog             <TEXT_0x7856>
+  closeTextBox     
+  op0a4            0x2 "SPESIAL_2" ""
+  op055            0x1
+  stopScript       
+
+:SPESIAL_2
+  op056            
+  openTextBox      
+  dlog             <TEXT_0x78C5>
+  dlog             <TEXT_0x78E0>
+  closeTextBox     
+  op0a4            0x2 "SPESIAL_3" ""
+  op055            0x1
+  stopScript       
+
+:SPESIAL_3
+  op056            
+  openTextBox      
+  dlog             <TEXT_0x7917>
+  dlog             <TEXT_0x792E>
+  closeTextBox     
+  op0a4            0x2 "SPESIAL_4" "HIGH"
+  op055            0x1
+  stopScript       
+
+:SPESIAL_4
+  op056            
+  openTextBox      
+  dlog             <TEXT_0x797D>
+  dlog             <TEXT_0x79A8>
+  closeTextBox     
+  op055            0x1
+  stopScript       
+
+:SPESIAL_5
+  op056            
+  openTextBox      
+  dlog             <TEXT_0x79E4>
+  closeTextBox     
+  op0a4            0x3 "SPESIAL_6" "HIGH"
+  op055            0x1
+  stopScript       
+
+:SPESIAL_6
+  op056            
+  openTextBox      
+  dlog             <TEXT_0x7A49>
+  closeTextBox     
+  op055            0x1
+  stopScript       
+
+:F_PL_13
+  queueLoad_0be    0x0 0x9
+  wait_089         
+  op015            0x0 0x140 0x100 0x140 0x1FF
+  op016            0x0
+  setBgPic         0x0 0x140 0x100 0x140 0x1FF 0x140 0xF0 0x1
+  op0b6            0x0 0x9
+  wait_089         
+  op0b6            0x1 0x6
+  wait_089         
+  op0b9            0x0 0x7
+  wait_089         
+  fadeIn           0x0 0x0 0x400 0x400
+  delay            0x40
+  op058            0x60 0x1
+  openTextBox      
+  op0b8            0x1 0x0 0xA0 0x20
+  op0ba            0x1 0x0 0x1 0xFFEA 0x0 0x0
+  wait_0bb         0x1
+  dlog             <TEXT_0x7AFF>
+  dlog             <TEXT_0x7B38>
+  dlog             <TEXT_0x7B4F>
+  dlog             <TEXT_0x7BC2>
+  closeTextBox     
+  op0c1            0x1
+  fadeOut          0x0 0x0 0x400 0x400
+  delay            0x40
+  op0bf            0x0
+  op0c0            0x0
+  op042            

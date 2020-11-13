@@ -1,0 +1,52 @@
+
+;================================
+; load graphics for top window interface labels
+;================================
+
+  ; 15 cells
+  charSeqToVram   0x100 0x00 <COMMON_topwin_reception>
+  charSeqToVram   0x140 0x00 <COMMON_topwin_battlerec>
+  charSeqToVram   0x1A0 0x00 <COMMON_topwin_controlroom>
+
+  ; 16 cells
+  charSeqToVram   0x100 0x10 <COMMON_topwin_financial>
+  charSeqToVram   0x170 0x10 <COMMON_topwin_publicity>
+  charSeqToVram   0x1B0 0x10 <COMMON_topwin_fundraising>
+  
+  ; 14 cells
+  charSeqToVram   0x100 0x20 <COMMON_topwin_purchaseequip>
+  charSeqToVram   0x180 0x20 <COMMON_topwin_enhancearmor>
+  
+  ; 16 cells
+  charSeqToVram   0x100 0x30 <COMMON_topwin_currentequip>
+  charSeqToVram   0x170 0x30 <COMMON_topwin_hangar>
+  charSeqToVram   0x1A0 0x30 <COMMON_topwin_robotabil>
+  
+  ; 9 cells
+  charSeqToVram   0x100 0x40 <COMMON_topwin_developweapons>
+  
+  ; 10 cells
+  charSeqToVram   0x100 0x50 <COMMON_topwin_spaces>
+  
+  ; 11 cells
+  charSeqToVram   0x100 0x60 <COMMON_topwin_budget1>
+;  charSeqToVram   0x190 0x60 <COMMON_topwin_budget2>
+  charSeqToVram   0x180 0x60 <COMMON_topwin_budget2>
+  
+  ; 8 cells
+  charSeqToVram   0x100 0x70 <COMMON_topwin_enhancemotor>
+  
+  ; 15 cells
+  charSeqToVram   0x100 0x80 <COMMON_topwin_vordan>
+  charSeqToVram   0x170 0x80 <COMMON_topwin_gareth>
+  
+  ; 14 cells
+  charSeqToVram   0x100 0x90 <COMMON_topwin_lionel>
+  ; MOVED FROM END
+  charSeqToVram   0x180 0x90 <COMMON_topwin_pocketstation>
+  
+  ; 9 cells
+  charSeqToVram   0x100 0xA0 <COMMON_topwin_perceval>
+  
+  ; 6 cells
+;  charSeqToVram   0x100 0xB0 <COMMON_topwin_pocketstation>

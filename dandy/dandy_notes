@@ -1,0 +1,980 @@
+
+ADV.PAC: 
+  index loaded to 80055F70, with "metadata" preceding at 80055F68
+    - code that does this is at 80013048
+    - "metadata":
+      - 4b ?
+      - 4b physical sector number of start of file on disc, used to
+           calculate target offsets when loading subfiles.
+           this is 0x1102 on the original game disc.
+    - index is 0x1000 bytes and consists of 0x8-byte structs:
+      - 4b sectornum within file (2 = first file at 0x1000)
+      - 4b size in bytes
+    - 0x34 entries total
+
+SLPS_022.45
+  routines:
+    8001165C = decmpStandard
+               a0 = src
+               a1 = dst
+    80011A50 = decmpEnd
+    80012EA4 = possibly graphic loading.
+               called for script font graphics.
+               see also 80020260
+               a0 = pointer to graphic
+    80013B08 = text stuff?
+    ~80013D38 = actual text processing
+    80013EDC = load script file?
+    800142D4 = *** runScriptFromLabel ***
+               a0 = pointer to label name
+               this is used to trigger scripts from the game code
+    8001487C = fetch script byte?
+    8001489C = setMainAndSubProg?
+               a0 = prog num?
+               a1 = subprog num?
+               for standard missions, this is called with a0 = 0 and a1 = id
+    80087180 = run certain special missions under certain circumstances?
+    800149E4 = interpret a script op?
+               a0 = src
+               a1 = ?
+               a2 = ?
+               a3 = 
+    80014F40 = script op 0001 = start printing string?
+    80015564 = openCompressedArchive?
+               used in 80017FB8 to decompress read subfile?
+               allocate and decompress?
+    800161A4 = addToDlogDisplayQueue
+    800162E8 = drawDlogDisplayQueue?
+    80016504 = *** handleNextTextChar? ***
+               handles next char in text sequence
+               a0 = srcptr
+               a1 = ?
+    80016A78 = decmp2bppTo4bpp
+               used for font graphics
+    80017FB8 = read ADV.PAC subfile?
+    80018078 = literal printing?
+    8001813C = read number string?
+               convert to int?
+    8001DDC0 = graphicToGpu?
+               a0 = ? infostruct pointer?
+               a1 = src?
+    80030420 = initialize heap
+               a0 = address
+               a1 = size
+    8003045C = malloc
+               a0 = requested size in bytes
+               return null if fail
+               otherwise return pointer to allocated memory
+    8003A60C = wait for pending file load?
+    8003B85C = queue load of index for a master pac (from a file, e.g. ADV.PAC)
+               queue file load for first 0x1000 bytes only?
+               a0 = dst
+               a1 = filename pointer
+    8003B8BC = queuePacFileIndexLoad
+               queue load of index for a subpac within a pac
+               a0 = ?
+               a1 = index pointer?
+               a2 = file num?
+    8003B914 = queueSubPacFileLoad
+               queues load of subfile from a subpac to memory
+               a0 = index pointer?
+               a1 = ? stack
+               a2 = file num?
+               returns v0 = dst file pointer
+    
+  data:
+    80048CE4 = 394e4
+               handler table for script ops?
+               0x151 ops total?
+               see 800149F8
+    80049848 = op structure pointer table.
+               one pointer per op, pointing to a null-terminated
+               sequence of byte identifiers giving the types of
+               the arguments to that op. (i.e. what i just spent many
+               hours compiling by hand for the script disassembler)
+               this is used in conditionals in order to skip over
+               unchosen branches.
+
+ADV.STM:
+  routines:
+    80061C50 = init for robot select?
+    80062504 = load resources for robot select?
+    80063A7C = synchronous logic for robot select/deployment?
+    80064E00 = draw budget/bonus/deployment cost overlays for robot select screen
+    80065314 = draw number on robot select screen
+               - a0 = x?
+               - a1 = y?
+               - a2 = ?
+                      0, 5, or 10?
+               - a3 = value to show
+    8007556C = setUpScrollingMenu?
+    80086CE0 = determine next mission?
+               and special events?
+  
+  data:
+    8008B4D0
+            = array of top-window label structure data (see op cd)
+    8008CF5C (2C4FC in file)
+            = array of results screen strings? destroyable objects specifically?
+                 - 2b base "src x" (e.g. A0 for character A within a src string)
+                 - 2b base "src y" (e.g. 10 for character assigned to src string 10)
+                 - 4b length?
+                      if <= 0, will not be drawn
+               e.g. 8008CFE4 = 信号機
+    8008D618 = table of word-length bitfields, one per mission number,
+               representing which special events can be triggered after
+               that mission. (~97 entries total?)
+               bit 1 set = event 1 (bankruptcy 1) can be triggered, etc.
+               see entry on event queue (80059000) for list of events.
+  
+  memory:
+    8009A050 = 2b: base x-pos of current scrolling menu?
+
+SINKOU.S3M: (loadaddr 80060A60)
+  800612BC (85C): table of 46 words indicating offsets of compressed roboselect
+            resources in SINKOU.PAC/9
+  80060BE0 (180): table of 0x104 words indicating offsets of compressed
+            credits row graphics in SINKOU.PAC/69
+  MEMORY:
+    80074430: "state" variable?
+              checked in 80062DAC to determine what "thing" to start doing.
+              to manipulate, set breakpoint on 80061958 or 80062DAC at startup,
+              then set to desired value.
+              00 = startup?
+              01 = credits
+    80085660: credits image idle counter?
+    80085668: credits state struct?
+      80085964: current credits image state
+                see 800643D0
+      80085968: current credits image index num
+
+
+
+80014340
+80017aa0
+
+MEMORY:
+  ~80048610 = array of objects, types, and counts destroyed(?)
+              by player in current map
+              - 4b ASCII label, e.g. "SIG" for traffic light
+              - 4b ?
+              - 4b count of objects of type destroyed?
+  80059054 = current player money
+             in millions of yen (i.e. 0xA = 10,000,000 yen)
+             see also 8009A71C?
+             - see code at 800810D0, which actually relates to
+               computing damage costs at end of mission but sort of helps
+             - note that the interface is not designed to exceed
+               9 trillion yen (and change), i.e. 0x98967F
+  80055E60 = *** start of script execution struct ***
+    80055E64 = pointer to current script label block
+    80055E68 = number of script labels (byte)
+    80055EEC = pointer to base address (start) of script data.
+               add to *0x80055EF8 to get actual current position?
+    80055EF4 = execution offset within current script
+    80055EF8 = offset of currently printing dlog string in script?
+    80055EFC = byteflag: nonzero if dlog printing active?
+    80055F04 = pointer to end of current dialogue string?
+               in at least op2c/messageInMenus
+    80055F0A = ?
+    80055F0B = mission num 1??
+               something representing state...?
+    80055F21 = current mission num
+  80055F68 = buffer for indices of loaded files?
+             e.g. ADV.PAC
+             - 4b ?
+             - 4b sector num of pack file start on disc
+             - 0x1000 byte index data
+  80056F94 = pac index for ADV-6?
+  80058FF0 = pointer to ? in script file?
+  80058FF4 = ? count? of ? in script file?
+  80058FF8 = pointer to ? in script file?
+  80058FFC = ? count? of ? in script file?
+  80059000 = queue of special events to run after the current mission.
+             has space for 0x13 entries total.
+             size of this queue is given by 8009A748.
+             event list:
+               01 = bankruptcy 1 (file 65)
+               02 = bankruptcy 2 (file 66)
+               03 = bankruptcy 3 (file 67)
+               04 = bankruptcy 4 (file 68)
+               05 = destroyed iron crab billboard (file 69)
+               06 = iron crab NOT destroyed?
+               07 = iron crab NOT destroyed, after previously destroying billboard?
+               08 = destroyed fujitsu co twice
+               09 = robot protest 1
+               0A = uoyama fish doing well
+               0B = uoyama fish closed
+               0C = destroyed supermarket
+               0D = destroyed supermarket again
+               0E = destroyed uoyama fish, got supermarket bribe
+               0F = destroyed miyuki's house twice
+               10 = destroyed miyuki's house 3 times
+               11 = destroyed miyuki's house 4 times
+               12 = destroyed miyuki's house 5 times
+                    (wow they really wanted you to keep doing this)
+               13 = destroying transport ships warning
+               14 = destroyed school 1 time
+               15 = destroyed school 2 times
+               16 = destroyed school 3 times
+               17 = miyuki backstory 1
+               18 = miyuki backstory 2
+               19 = miyuki backstory 3
+               1A = 100% approval, get scissor arm
+               1B = NOT USED: doctor wants to complete asmodeus
+               1C = NOT USED: asmodeus complete
+               1D = NOT USED: asmodeus under maintenance
+               1E = return to control room
+               1F = quicksave
+               20+ just go straight to next mission?
+  80059018+24 (8005903C)
+           = special mission trigger?
+             if nonzero, runs special mission before next normal mission
+  80059018+2C (80059044)
+           = next normal mission id?
+             run this mission next if not preempted by something else
+             (special mission, event?)
+  80059018+34 (8005904C)
+           = current mission id???
+  80059608 = *** print struct? ***
+             +4 = printing x-pos (in chars)?
+             +5 = printing y-pos (in chars)?
+  80059608+60 = dlog char display queue
+                - see 800161A4
+                - each entry is 60 bytes and identifies
+                  a character to be displayed in the current
+                  dialogue box
+                - 45 entries total (3 lines * 15 characters each)
+  8005AC38 = pointer to start of current script's font graphic?
+  8006E1FA = ? file load flag? word
+             set nonzero after loading done?
+  80074418 = bitfield of robots unlocked for battle mode.
+             FFFFFF = jonney and inu can be picked, but game crashes
+                      when you try to start the match :(
+  80075408 = numberTo10DigitBase10
+             a0 = value
+             returns pointer to 10-digit base 10 representation of input
+  80075498 = renderNumber?
+  80075A50 = drawing e.g. digits on file select screen?
+  80099EFC = count of size of text transfer display buffer in cells
+             see 0x80073CF0
+             - 0x80073CF0 = set this up for the specified number of cells
+             - 0x80074E6C = destroy and clear this
+  8009A748 = indicates whether to use control room or quicksave after mission?
+             see 800875DC
+  8009ADF4 = robot select: selected robot ID?
+             affects deployment cost window
+  801EE000 = possible load destination for script(?) files?
+             see 8001401C
+             
+  0x34($gp) = ?
+              incremented with y??
+              see 80016918
+  0x0138($gp) = most recently handled text sequence?
+
+9a8f0
+
+COMPRESSION:
+  8001165C = decompression routine
+  
+  - compressed file header:
+    - 4b signature? "BaB\x00"
+    - 4b ? zero?
+    - 4b decompressed size
+    - 4b ?
+  - followed by compressed data
+  
+  - special handling for first byte:
+    - check initial byte.
+      - if < 0x12, goto loop1start
+      - if 0x12-0x14, copy raw?
+        goto loop2start?
+      - if 0x15+, copy raw.
+        goto loop1end
+    
+    loop1start:
+      - fetch byte
+      - if >= 0x10, goto loop2start
+      - do something that boils down to "copy N bytes"
+        except it looks more complicated due to being optimized
+        for the case where src/dst are both word-aligned
+    
+    loop1end:
+      - fetch byte
+      - if >= 0x10, goto loop2start
+      - if < 0x10, do a lookback run?
+        - base = (dst - 0x801)
+    
+    loop2start:
+  
+  
+  
+  
+  
+  
+  start:
+    - fetch byte = cmd
+    - if cmd < 0x12: goto mode1
+    - if (0x12 <= cmd < 0x15):
+      - length = (cmd - 0x11)
+      - goto shortCopySub
+    - if (cmd >= 0x15):
+      - length = (cmd - 0x11)
+      - copy length bytes from src to dst
+      - goto mode1Lookback
+  
+  mode1:
+    - fetch byte = cmd
+    - if cmd >= 0x10: goto mode2
+    - derive size:
+      - if 0, this is an extended size:
+          - advance src until a nonzero byte is found.
+            for each zero byte, and for the terminating nonzero byte,
+            add 0xFF to a counter.
+          - fetch terminating nonzero byte = sizelo
+          - add 0xF to counter, then add sizelo to get total size
+      - else size = cmd
+    - copy raw content:
+      - copy (size + 3) bytes from input to output
+    - fetch byte = cmd2
+  mode1Lookback:
+    - if cmd2 >= 0x10: goto mode2
+    - do lookback:
+      - fetch byte from src = offset
+      - copysrc = (dst - 0x801) - (cmd2 >> 2) - (offset << 2)
+      - copy 3 bytes from copysrc to dst
+    - goto shortCopy (with src-2 = cmd2)
+  
+  mode2:
+    - if (cmd >= 0x40):
+      - fetch byte = subcmd
+      - copysrc = (dst - 1) - ((cmd >> 2) & 0x7) - (subcmd << 3)
+      - length = (cmd >> 5) - 1
+      - goto copyLookback
+    - if (cmd >= 0x20):
+      - length = (cmd & 0x1F)
+      - if length == 0, this is an extended length:
+        - advance src until a nonzero byte is found.
+          for each zero byte, and for the terminating nonzero byte,
+          add 0xFF to a counter.
+        - fetch terminating nonzero byte = sizelo
+        - add 0x1F to counter, then add sizelo to get total size
+      - byte0 = fetch byte
+      - byte1 = fetch byte
+      - copysrc = (dst - 1) - ((byte0 >> 2) + (byte1 << 6))
+      - goto copySpecial
+    - if (cmd >= 0x10):
+      - temp = (cmd & 0x8) << 11
+      - length = (cmd & 0x7)
+      - if length == 0, this is an extended length:
+        - advance src until a nonzero byte is found.
+          for each zero byte, and for the terminating nonzero byte,
+          add 0xFF to a counter.
+        - fetch terminating nonzero byte = sizelo
+        - add 0x7 to counter, then add sizelo to get total size
+      - byte0 = fetch byte
+      - byte1 = fetch byte
+      - copysrc = dst - ((cmd & 0x8) << 11) - ((byte0 >> 2) + (byte1 << 6))
+      - if copysrc == dst: goto done
+      - else:
+        - copysrc -= 0x4000
+        - goto copyLookback
+    - if (cmd < 0x10):
+      - fetch byte
+      - copysrc = (dst - 1) - (cmd >> 2) - (byte << 2)
+      - copy 2 bytes from copysrc to dst
+      - goto shortCopy
+  
+  copySpecial:
+    - functionally identical to copyLookback, just optimized for the possibility
+      of doing word-length copies.
+      jumps to copyLookback if this isn't possible.
+  
+  copyLookback:
+    - copy (length + 2) bytes from copysrc to dst
+    - goto shortCopy
+
+  shortCopy:
+    - if (src-2 & 0x03) == 0: goto mode1
+    - if (src-2 & 0x03) != 0:
+  shortCopySub:
+      - copy (cmd2 & 0x03) bytes from src to dst
+      - goto mode2 (next byte = cmd)
+  
+  done:
+  
+  
+GRAPHICS:
+                 - 0x200 byte palette
+                 - 0x4-byte ?
+                 - 0x2-byte width? /2??
+                 - 0x2-byte height? /2??
+                 - 8-bit image data?
+                 - ???
+  - 0x14-byte ?
+    - 4b ? 0x10?
+    - 4b format?
+         0x09 if 8-bit, 0x08 if 4-bit?
+    - 4b size of subdata?
+         0x20C if  8-bit, 0x2C if 4-bit?
+    - 4b ? zero?
+    - 4b ???
+         usually 0x00010100 for 8-bit,
+         usually 0x00010010 for 4-bit?
+    if 8-bit, this seems to usually/always be:
+      0x10
+      0x9
+      0x20C
+      0x0
+      0x00010100
+  - subdata:
+    - palette
+      0x200 bytes if 8-bit, 0x20 bytes if 4-bit
+    - 0xC-byte header:
+      - 1b ?
+      - 2b? width???
+            but this is not always accurate!
+      - 5b? ?
+      - 2b width/2?
+      - 2b height?
+  - image data...
+  
+"multi-graphics"
+  e.g. SINKOU.PAC-45
+  these are "linked lists" of sorts.
+  format:
+    4b number of links?
+    links:
+      - 4b absolute file offset of next link.
+           last link points to EOF.
+      - 4b ?
+      - 2b? ?
+      - 2b? ?
+      - 2b w?
+      - 2b h?
+      - 2b? ?
+      - 2b? ?
+      - 2b? ?
+      - 2b? ?
+      - 0x20-byte palette?
+      ...graphics data...
+  
+FILES:
+  ADV.PAC
+    - master pac for scene resources
+      - file 0 = ? various resources?
+                 varying formats.
+                 some are single images, others are grouped.
+                 - 0: ? yes/no buttons
+                 - 1: SINGLE IMAGE -- NOT AN IMGARC!!
+                      contains background for e.g. chapter titles.
+                 - 2: imgarc for game over screen (and stuff?)
+                 - 3: imgarc of mission overview map labels
+                      ("player", "robo", etc.)
+                 - 4: imgarc of area maps
+                 - 5: imgarc of area maps
+                 - 6: imgarc of area maps
+                 - 7: imgarc of area maps
+                 - 8: imgarc of area maps
+                 - 9: imgarc of damage report resources.
+                      windows, backgrounds, digits/yen characters,
+                      bankruptcy stamp
+                 - 10: imgarc for quicksave screen (buttons, logo, etc.)
+                 - 11: SINGLE IMAGE
+                       vordan icon
+                 - 12: SINGLE IMAGE
+                       vordan icon
+                 - 13: SINGLE IMAGE
+                       vordan icon
+                 - 14: probably the pocketstation minigame.
+                       contains 1bpp 8bit english font, among other things.
+      - file 1 = image files with some special format.
+                 character portraits and animations?
+                 there seem to be multiple formats in play
+                 - PORTRAITS (first offset = 0x20??):
+                   index:
+                   - offset to base graphic
+                   - offset to animated sprite graphic
+                     (note: no palette?)
+                   - offset to sprite sheet data
+                     - 4b numentries
+                       - 2b dst x
+                       - 2b dst y
+                       - 2b src x
+                       - 2b src y
+                       - 2b w/2
+                       - 2b h
+                   - offset to animation data??
+                     - 4b count? of ???
+                       sprite indices for animation?
+                       - 2b framenum?
+                       - 2b frame time?
+                   - offset to animation data??
+                     - 4b count? of ???
+                       sprite indices for animation?
+                       - 2b framenum?
+                       - 2b frame time?
+                   - null?
+                     maybe additional animation slots?
+                   - null?
+                   - null?
+                 - ANIMATIONS (first offset = 0x10??):
+                   null-terminated index?
+                   - entry 0 = graphics:
+                     - 4b number of subgraphics
+                       - 4b size of each successive graphic
+                     - graphic data
+                       - only first has palette?
+                   - entry 1 = sprite sheet data?
+                     - 2b dst or src x?
+                     - 2b dst or src y?
+                     - 2b w/2
+                     - 2b h
+                   - entry 2 = animation data?
+                     - 2b framenum?
+                     - 2b frame time?
+      - file 2 = PAC of image background files (mostly).
+                 each subfile is a compressed 8-bit background image.
+                 there are a few things in here that aren't strictly
+                 backgrounds, e.g. the hangar doors for the unveiling
+                 of vordan.
+      - file 3 = ?
+                 mish-mash of compressed and uncompressed files.
+                 - 0: has some standard SEQ and VAB stuff...
+                      maybe sound stuff?
+                 - 1: ???
+                 - 2: linkpac of images/textures for ???
+                 - 9: a bunch of images shoved, sequentially, without any kind
+                      of organization, into a single file.
+                      fucking christ.
+                      let's call this a "seqpac".
+                      anyway, these seem to be resources for the robot select
+                      screen or something.
+                 - 10: ???
+                 - 11: linkpac of images/textures for ???
+                 - 12: seqpac for ???
+                 - 13: single image: bg for ??? water???
+                 - 14: single image: bg for ??? sky???
+      - file 4 = more assorted sound(?) stuff.
+                 various VABs and SEQs, some other things (e.g. 134.bin)
+      - files 5-103: scene data packs
+                     Each scene contains, at minimum:
+                       - 0 = scene data.
+                             contains graphic for font, script data, etc.
+                             see specific subsection.
+                       - 1 = smallpac of compressed character portraits?
+                     additional files are packed in on a per-scene basis.
+                     - for chapter titles, there's a compressed archive
+                       containing needed graphics in the following format
+                       (see e.g. ADV/6/decmp/3.bin):
+                       - 4b number of subimages
+                       - n entries:
+                         - 4b graphic size
+                       - followed by each image in standard format
+                       - the first graphic seems to contain the text,
+                         while the next two are the two halves of the
+                         "shine" effect?
+  SONIC.AOE
+    - various resources, mostly(?) for 3D mode.
+      textures for robots, etc.
+    - e.g. 324, 422 have text graphics to be replaced (バビロン)
+    - 147-11 = intro cutscene text overlay
+      - also 154-9
+
+SCENE DATA
+  see ADV.PAC files 5-103, subfile 0
+  - 4b size of font graphic
+  - font graphic (see GRAPHICS for format)
+  - 4b number of script labels
+  - script label array, 0x14 bytes per entry
+    - 0x10-byte name (padded with null)
+    - 4b offset from script block start?
+  - 4b ? number(?) of ???
+       seems to be sum of the number of entries in the two unknown
+       blocks that follow.
+       game skips over this...
+  - 4b number of ?
+       count of words that follow (can be zero)
+  - words...
+  - 4b number of ?
+       count of words that follow (can be zero)
+  - words...
+  - script block
+
+14b3
+
+script op 0001 is (almost?) always used to trigger printing text.
+  - also 005A XXXX XXXX <string>
+characters in the font are assigned indices starting from 0x8001 for the first
+character and ascending from there.
+(does 0x8000 have any special meaning? space?
+apparently not.)
+ascii characters are also used in strings for control codes
+(e.g. "\n" for newline).
+so we can scan the files with the following heuristics:
+  - skip to the script block using the normal logic
+  - scan for the sequence "01 00"
+  - on a match, read a sequence of zero-terminated characters.
+    read using the normal SJIS procedure.
+    if any of the following happen, string is invalid and gets thrown out:
+    - a byte < 0x20 is read (other than null terminator)
+    - a sjis-like sequence is read that has an index higher than the last
+      character in the font (or zero?)
+    - eof reached
+after reading all the strings, we can verify at least basic correctness by
+checking that all characters in the font are used.
+
+script op 0079 = set portrait?
+script op 007A = remove portrait?
+
+
+(sometimes)
+80087E3C = heap size
+80087E40+ = heap
+
+
+
+note: 7:#STARTSTRING(49364, 32, 49362) not valid
+
+800B2A9C: 20 00 a0 af 24 00 a2 af 28 00 a0 af
+  - from SONIC.AOE (appears in multiple positions)
+
+
+
+80014a44 = script cmd call
+80014a4c = script cmd end
+script offset = 55ef4
+
+SONIC.AOE file 151 offset 0x884 = 800B2AE0
+  - so loaded to 800B225C
+
+181/337
+
+1fd07c
+
+script ops:
+  - rename ops:
+    - op022 -> setBgPic?
+    - op05d -> generateWindow
+    - op05f -> initCharTextureDisplayBuffers
+    - op081 -> graphicToScreen?
+              ; param1 = 0 target display slot
+              ; param2 = 0x2F = dstX?
+              ; param3 = 0x5F = dstY?
+              ; param4 = 0x0 = srcX?
+              ; param5 = 0x0 = srcY?
+              ; param6 = 0x20 = w?
+              ; param7 = 0x20 = h?
+    - op090 -> playSoundEffect? (maybe)
+    - op0cd -> setTopWindowLabel
+      - param1 = index (0/1) -- up to 2 simultaneous labels are possible
+        - slot0 = 80099FB0
+        - slot1 = 80099FB4
+      - param2 = x-pos
+      - param3 = label ID
+    - op05e -> closeWindow? param = id?
+    - loadChapterTitleGraphicChars -> initChapTitleSlots
+  - op info:
+    vramSeqToScreen:
+      - param 1 = ?
+      - param 2 = ?
+      - param 3 = width in "characters" (now 16x16 blocks)
+      - param 4 = ?
+      - param 5 = ?
+      - param 6 = srcbase?
+      - param 7 = srcoffset?
+      - param 8 = 1 if position is absolute, 0 if relative to something else?
+
+    - op015 -> showNowLoading??
+               or graphics in general?
+    - op145 -> showOverlay??
+    - op146 -> fadeOutOverlay??
+
+
+to get special meal voucher + rena events, do not destroy iron crab
+  in "beware the nightlife"?
+  do other missions matter?
+
+
+
+
+TODO
+  - REMEMBER TO TURN ON ECC CALCULATION FOR FINAL BUILD
+  - and remember to rebuild all missions after e.g. font changes
+
+done:
+  ? gamescript comments appear to be bugged, maybe -- freezing in script6
+  - messageInMenus may not work correctly for menus where the player can
+    interrupt the message while it's still printing (queue not shut off)
+  - implement proper compression
+    (this has to be at least good enough that e.g. the title screen graphics,
+    which are contained in a file that's 512kb uncompressed, can fit into
+    memory once compressed)
+  - implement VWF for non-dialogue text opcodes
+    - charSequenceToVram (op 0x05a)
+      - of course, in the scripts themselves, corresponding instances of
+        vramSeqToScreen (op 0x5b) must also be modified for new text
+    - messageInMenus??? (op 0x2c)
+  - implement script wrapping
+  - some stuff is duplicated in the script a lot.
+    add support for "common" strings that go in a separate file and can
+    be included from any gamescript.
+    these strings should have names rather than numbers.
+    - script assembler also needs support for includes so repeated sections
+      can be put in common logic files
+  - it's possible that the game has situations in which a messageInMenus
+    or dlog string is printing at the same time that the game decides
+    to print a number, or do a charSequenceToVram.
+    if this happens, the currently printing string will get cut off or otherwise
+    corrupted.
+    if this turns out to be the case, there are basically two solutions:
+      1. rewrite renderDlogVwfString et al. to be parameterized -- we'll need
+         two separate queues, as well as separate scratch spaces in the font
+         area for the composed content.
+      2. make the offending dlog/messageInMenus strings print instantly.
+         if this is even possible, because i haven't checked.
+    - yep, i was right
+  - create makefile for script build
+    - get sick of having to read the whole damn script in once per output file
+      and figure out something better.
+      probably not happening.
+  - document needed parts of scripting system (image display, etc.),
+    then finalize script rips with updated mnemonics
+  - fix hardcoded labels for e.g. destroyed stuff report
+    - this is tricky due to duplicated text/script code, and because the game
+      does something pretty crude where the necessary graphics for the
+      text are dumped directly into VRAM by the script, then displayed using
+      hardcoded logic in the executable.
+      would be nice if this could somehow be macro-ized, but i feel like it
+      would probably be even more trouble than just doing it manually.
+      (never mind, implemented script include + shared string support)
+    - we may need to make the same 14px->16px adjustment as with the dialogue
+      - ...seriously, they hardcoded this spacing at least a dozen times over
+  - the game uses lots of japanese units for reporting large yen quantities,
+    which probably comes naturally for japanese players but is very confusing
+    if you aren't used to it. ("you have 639 hundred million yen, and this item
+    will cost 20 billion yen": how much money would you expect to have
+    afterward? the answer is 439 hundred million yen, but i sure had to think
+    about it.)
+    we could either add two digits of precision to get it to millions of yen,
+    or remove one to take it to billions.
+    but in the former case we run the risk of not being able to display very
+    large amounts (the game is designed for up to 10 digits),
+    and in the latter we're either making the display less precise, or we have
+    to deal with some ridiculous scheme of inserting a period to make it a
+    decimal display
+  - the highlight effect applied to the currently selected option in menus
+    is broken for the new 16x16 size blocks.
+    see ~0x800733D8.
+    - while "fixing" this to multiply by 16 instead of 14 is easy, it doesn't
+      work properly (highlight extends beyond text).
+      however, as-is, it just causes the highlight to extend for the full width
+      of the menu? which may be what we want anyway.
+      - oh, i get it -- all the strings associated with the menu are evaluated,
+        and the longest option's width * 14 is used as the selector's width.
+        so this looks fine without modification when the longest option is
+        exactly the width of the window, but otherwise gets thrown off.
+    - there's also some analagous code for non-menu stuff around ~0x80073AB4,
+      but i'm not actually sure what it does.
+  - make extractor/builder for simple "packed" graphics (e.g. ADV/6/3)
+  - fix semi-hardcoded menu labels.
+    presumably they have something analogous to the damage report labels.
+  - figure out something so we can safely use the game's "scroll text out"
+    thing.
+    as it is, i'm pretty sure it'll corrupt memory if there's too much text.
+    - should be okay now as long as it doesn't require more than 0x60 cells?
+  - what is SINKOU-69? compressed compression headers
+    - oh it's the credits
+  - make sure doExtraRoboSelectInit/doExtraRoboSelectCleanup are properly
+    executed at the start/end of a deployment sequence under all circumstances
+    (including when the robot select sequence is skipped)
+  - finalize font
+  - Makefile_script is pretty busted.
+    have to touch all kinds of files before it'll do what you want.
+    probably should have split the script up per mission...
+    - well, it's good enough i guess
+  - roboselect labels
+  - in-mission textures (rsrc/SONIC.AOE/maybe, and credits images)
+  - credits
+  - consider reducing width of auto-generated comma separators in numbers
+    - went from 8 to 5, seems appropriate
+  - edit punishment missions
+  - alt version of avalon mission
+  - cd tracks/pointers do not have correct pregaps -- may need adjustments
+    to discaster
+    - oh, apparently i fixed this ages ago
+      - wait, no i didn't, but now i did
+  - "robot select" on battle mode menu
+  - right-align completion bonus amounts?
+  - two pixels of space after ellipsis or one??
+  - remove spaces after ellipses?
+  - remove spaces after "dashes"?
+  - black outline version of title?
+    - it looks fine as it is
+  - double-check all events and stuff
+  - arbitrarily decide which emulator gets the subtitle sync in
+    camelon's counterattack 2 closer to real hardware
+    - guess we'll go with mednafen
+  - check that auto-timed voiced lines in file 024 play in full
+  - capitalize objectives?
+    - okay, actually decapitalize them
+  
+  
+  
+  
+  
+
+- op104 = jumpToScript?
+- missions with pre-op map and/or damage report (which need to be macroized):
+  - 10
+  - 12
+  - 14
+  - 16-18
+  - 20-21
+  - 23-33
+  - 34-35 have map, but no damage report
+  - 36 has damage report only
+  - 37-38
+  - 39 has damage report only
+  - 40-44
+  - 45 has damage report only
+  - 46
+  - ** jump to 95, which has nothing...
+  - 47
+  - 48: objective only
+  - ** jump to 50
+  - 49
+  - 52-55
+  - 56-57: objective only
+- title screen, menus, battle mode text/labels
+  - still need to do "shattered" title screen
+  - and also the "shine" effect, if i can bring myself to care enough
+- chapter titles
+- replace text on a few cgs that could use it
+  (e.g. torino map during early missions)
+- the file select screen has some resources for displaying numbers...
+  is this even used?
+  see 12AC7
+
+
+
+- for emboss effect on chapter titles:
+  - zoom overlay:
+    - simply generate the text using a thin font in pure white (#FFFFFF)
+      with antialiasing.
+      let the color remapping take care of the rest.
+  - emboss background:
+    - use color #DEDEDE and bold/heavy weight for original text.
+      just doing a direct select->grow->fill operation on the zoom overlay
+      will probably work too, assuming the letter spacing allows it.
+    - convert text to path
+    - apply emboss with azimuth = 30, elevation = 30, depth = 1
+    - replace any near-black pixels with darkest gray (#242424)
+    - to keep the colors in the full range of brightness:
+      create a selection from the path generated from the original text.
+      shrink it by 1px (or as appropriate), then fill the result with
+      color #DEDEDE and overlay it on the generated emboss effect.
+      (set to 75% opacity? or use darker shade?)
+- okay, try this:
+  - font = steelfish italic, size 32, color #DEDEDE, letter spacing +3.5
+    (TODO: actually a bit more spacing -- we need to make sure there's no
+    horizontal overlap between the letters, assuming we stick with printing them
+    one-by-one)
+    antialiasing on.
+    alternatively, steelfish bold.
+  - generate desired string; convert to path
+  - create selection from that path, grow by 2 pixels, then fill with #242424
+  - KEEP SELECTION ACTIVE,
+    and apply emboss filter with azimuth = 30, elevation = 30, depth = 1
+  - threshold alpha at 127. (maybe 192 or 224 would be better?)
+  - crop bottom/top rows of result if needed
+  - create selection from path again, then fill it with #DEDEDE (i.e. overlay
+    the original text on top of the generated effect).
+    make this layer 75% opacity.
+- or:
+  - use slightly smaller font (steelfish ultra-bold, 30pt, 4.5 spacing?)
+    create 3 layers based on the path of the base text (#DEDEDE).
+    for each one, grow by 1px.
+    emboss each separately (30/30/4? maybe lower the depth on the back layer?)
+    threshold alpha.
+    clean up black -> gray.
+  - this might actually work!!
+  - orbitron size 21 works pretty well
+  - or dagestan size 34
+  - or hemi head size 24
+    - yeah, probably this
+    - hemi head, size 24, letter spacing 3.0
+  - then again, the italic effect causes overlap that makes it difficult to
+    make the "letter printing" effect look convincing.
+    maybe go with something non-italic instead.
+    - daggersquare?
+
+
+80073A84
+80107E78
+
+99EF0 = ? menus?
+
+99fb0
+
+1,076,013
+
+9a8f0 = state
+
+9ada8 = target map index
+
+2.678322
+
+.20
+.50
+.50
+27.00
+
+95754
+1ab270
+1ab258
+
+SONIC.AOE/4.bin 0x958 = 0xB6974
+  - so overlay at 0xB601C
+  
+delay between credits images (SINKOU.S3M 800645B0)
+  - base is 0x4C
+  - 10 images total
+    - block 0 = 4
+    - block 1 = 4
+    - block 2 = 2
+  - under original timing:
+    - block 0:
+      - first img starts fading in at ~388
+        = 美村美幸
+      - last img fully fades out at ~1810
+        = [?出] header in block 1
+    - block 1:
+      - first img starts fading in at ~1884
+        = start of content of ［作画］
+      - last img fully fades out at ~3296
+        = ...something... 美?子
+    - block 2:
+      - first img starts fading in at ~3392
+        = ［開発ツール?授］
+      - last img fully fades out at ~4160
+        = end!!
+  - lower to 0x10 (minus 60), and we gain about 600 pixels vertically across
+    the whole sequence. (last image fully fades out at ~3500, デバック)
+    60 pixels per image.
+    block0 is effectively ~240 pixels shorter,
+    block1 is effectively ~240 pixels shorter,
+    and block2 is effectively ~120 pixels shorter.
+
+Completion Bonus\n\n\n#ENDSTRING()\n
+Completion Bonus\n\n\n#ENDSTRING()\n\n\n\n#SETALIGNMODE(RIGHT)\n#SETWIDTH(103)\n#SETERRORONOVERFLOW(1)\n
+
+ billion yen\n\n\n#ENDSTRING()\n
+ billion yen\n\n\n#ENDSTRING()\n\n#SETALIGNMODE(NONE)\n#SETSIZE(215, 3)\n#SETERRORONOVERFLOW(0)\n\n\n
+ 
+None\n\n\n#ENDSTRING()\n
+None\n\n\n#ENDSTRING()\n\n#SETALIGNMODE(NONE)\n#SETSIZE(215, 3)\n#SETERRORONOVERFLOW(0)\n\n\n
+
+- the necessary x-scale to make mednafen produce unstretched 320x240 output
+  for this game is 320/292 = 1.09589
+

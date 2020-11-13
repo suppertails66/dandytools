@@ -1,0 +1,1776 @@
+
+//====================================================
+// common string file
+// this contains strings which are repeated in the
+// main script (e.g. the labels for damage reports)
+// so they can be reused multiple times as needed
+//====================================================
+
+#STARTFILE(000)
+
+//====================================================
+// mission report
+//====================================================
+
+#LOADTABLE("table/dandy_en_narrow.tbl")
+#SETERRORONOVERFLOW(1)
+
+#SETALIGNMODE(LEFT)
+
+
+//=====
+// SEGMENT 0x0-0xB0
+// total: 1 cell
+//=====
+
+#STARTSTRING("report_x")
+// 1 cells
+#SETWIDTH(16)
+
+// ×
+×
+
+#ENDSTRING()
+
+
+
+
+//=====
+// SEGMENT 0x10
+// total: 16 cells
+//=====
+
+
+#STARTSTRING("report_privatehouse")
+// 4 cells
+#SETWIDTH(64)
+
+// 民家
+Private House
+
+#ENDSTRING()
+
+//// 2 cells
+//#STARTSTRING("report_private")
+//#SETWIDTH(32)
+//Private
+//#ENDSTRING()
+//
+//// 2 cells
+//#STARTSTRING("report_house")
+//#SETWIDTH(32)
+//House
+//#ENDSTRING()
+
+#STARTSTRING("report_building")
+// 2 cells
+#SETWIDTH(32)
+
+// ビル
+Building
+
+#ENDSTRING()
+
+#STARTSTRING("report_car")
+// 1 cells
+#SETWIDTH(16)
+
+// 車
+Car
+
+#ENDSTRING()
+
+#STARTSTRING("report_ship")
+// 2 cells
+#SETWIDTH(32)
+
+// 船
+Ship
+
+#ENDSTRING()
+
+#STARTSTRING("report_container")
+// 3 cells
+#SETWIDTH(48)
+
+// コンテナ
+Container
+
+#ENDSTRING()
+
+#STARTSTRING("report_trafficlight")
+// 4 cells
+#SETWIDTH(64)
+
+// 信号機
+Traffic Light
+
+#ENDSTRING()
+
+
+
+
+//=====
+// SEGMENT 0x20
+// total: 13 cells
+//=====
+
+#STARTSTRING("report_miyukishouse")
+// 4 cells
+#SETWIDTH(64)
+
+// 美幸の家
+Miyuki's House
+
+#ENDSTRING()
+
+#STARTSTRING("report_train")
+// 2 cells
+#SETWIDTH(32)
+
+// 電車
+Train
+
+#ENDSTRING()
+
+#STARTSTRING("report_fujitsuco")
+// 3 cells
+#SETWIDTH(48)
+
+// 富士津商会
+Fujitsu Co.
+
+#ENDSTRING()
+
+#STARTSTRING("report_uoyamafish")
+// 4 cells
+#SETWIDTH(64)
+
+// うおいち
+Uoyama Fish
+
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0x30
+// total: 13 cells
+//=====
+
+#STARTSTRING("report_supermarket")
+// 4 cells
+#SETWIDTH(64)
+
+// Ｓマーケット
+Supermarket
+
+#ENDSTRING()
+
+#STARTSTRING("report_transport_ship")
+// 5 cells
+#SETWIDTH(80)
+
+// 輸送船
+Transport Ship
+
+#ENDSTRING()
+
+#STARTSTRING("report_convenience_store")
+// 5 cells
+#SETWIDTH(80)
+
+// コンビニ
+Convenience Store
+
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0x40
+// total: 14 cells
+//=====
+
+#STARTSTRING("report_human_office")
+// 5 cells
+#SETWIDTH(80)
+
+// ヒューマン支社
+//Human Entertainment Office
+Human Ent. Office
+
+#ENDSTRING()
+
+#STARTSTRING("report_station")
+// 2 cells
+#SETWIDTH(32)
+
+// 駅
+Station
+
+#ENDSTRING()
+
+#STARTSTRING("report_shrine")
+// 2 cells
+#SETWIDTH(32)
+
+// 神社
+Shrine
+
+#ENDSTRING()
+
+#STARTSTRING("report_tokyo_bridge")
+// 5 cells
+#SETWIDTH(80)
+
+// 都庁連絡橋
+//Tokyo Government Connecting Bridge
+Tokyo Govt. Bridge
+
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0x50
+// total: 15 cells
+//=====
+
+#STARTSTRING("report_ozaconglomerate")
+// 7 cells
+//#SETWIDTH(112)
+// 7 cells (but max displayable width with no overlap is 100px)
+#SETWIDTH(100)
+
+// 王座財閥ビル
+//Oza Conglomerate Building
+Oza Conglomerate Bldg.
+
+#ENDSTRING()
+
+#STARTSTRING("report_highway")
+// 3 cells
+#SETWIDTH(48)
+
+// 高速道路
+Highway
+
+#ENDSTRING()
+
+#STARTSTRING("report_tokyooffice1")
+// 6 cells
+#SETWIDTH(96)
+
+// 都庁第一庁舎
+//Tokyo Government Office 1
+//Tokyo[space1px][space1px]Gov.[space1px][space1px]Office[space1px]1
+Tokyo Govt. Office 1
+
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0x60
+// total: 10 cells
+//=====
+
+#STARTSTRING("report_ironcrab")
+// 3 cells
+#SETWIDTH(48)
+
+// カニ鉄人
+Iron Crab
+
+#ENDSTRING()
+
+#STARTSTRING("report_atomicresearch")
+//// 7 cells
+//#SETWIDTH(112)
+// 7 cells (but max displayable width with no overlap is 100px)
+#SETWIDTH(100)
+
+// 原子力研究所
+Atomic Research Inst.
+
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0x70
+// total: 12 cells
+//=====
+
+#STARTSTRING("report_powerplanta")
+// 6 cells
+#SETWIDTH(96)
+
+// 鶏野発電所Ａ棟
+Power Plant Building A
+
+#ENDSTRING()
+
+#STARTSTRING("report_powerplantb")
+// 6 cells
+#SETWIDTH(96)
+
+// 鶏野発電所Ｂ棟
+Power Plant Building B
+
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0x80
+// total: 15 cells
+//=====
+
+#STARTSTRING("report_harborfacil")
+// 5 cells
+#SETWIDTH(80)
+
+// 港湾施設
+Harbor Facilities
+
+#ENDSTRING()
+
+#STARTSTRING("report_viewingplatform")
+// 5 cells
+#SETWIDTH(80)
+
+// 展望台
+Viewing Platform
+
+#ENDSTRING()
+
+#STARTSTRING("report_tokyooffice2")
+// 6 cells
+#SETWIDTH(96)
+
+// 都庁第二庁舎
+//Tokyo Government Office 2
+//Tokyo[space1px][space1px]Gov.[space1px][space1px]Office[space1px]2
+Tokyo Govt. Office 2
+
+#ENDSTRING()
+
+
+
+
+//=====
+// SEGMENT 0x90
+// total: 16 cells
+//=====
+
+#STARTSTRING("report_tokyocongress")
+//// 7 cells
+//#SETWIDTH(112)
+// 7 cells (but max displayable width with no overlap is 100px)
+#SETWIDTH(100)
+
+// 都庁議会棟
+//Tokyo Government Congress Building
+Tokyo Congress Bldg.
+
+#ENDSTRING()
+
+#STARTSTRING("report_buildinggate")
+// 4 cells
+#SETWIDTH(64)
+
+// ビル型ゲート
+//Building-type Gate
+Building Gate
+
+#ENDSTRING()
+
+#STARTSTRING("report_torinopowerplant")
+// 5 cells
+#SETWIDTH(80)
+
+// 鶏野発電所
+Torino[space1px][space1px]Power[space1px][space1px]Plant
+
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0xA0
+// total: 16 cells
+//=====
+
+#STARTSTRING("report_tdfco")
+// 8 cells
+#SETWIDTH(128)
+
+// （株）鶏野警備隊
+Torino Defense Force Co.,[space1px][space1px]Ltd
+
+#ENDSTRING()
+
+#STARTSTRING("report_reportnum")
+// 3 cells
+#SETWIDTH(48)
+
+// 第
+//Report N.
+//Report No.
+Report #
+
+#ENDSTRING()
+
+#STARTSTRING("report_reportnum2")
+// 0 cells
+#SETWIDTH(0)
+
+// 回決算
+// 
+
+#ENDSTRING()
+
+#STARTSTRING("report_completionbonus")
+// 5 cells
+#SETWIDTH(80)
+
+// 成功報酬
+Completion Bonus
+
+#ENDSTRING()
+
+
+//=====
+// SEGMENT 0xB0
+// total: 9 cells
+//=====
+
+#STARTSTRING("report_losses")
+// 2 cells
+#SETWIDTH(32)
+
+// 今回の損害
+Losses
+
+#ENDSTRING()
+
+#STARTSTRING("report_circletotal")
+// 7 cells
+#SETWIDTH(112)
+
+// [button_circle]ボタンで総計算
+//Press [button_circle] Button for total
+Press[space1px][space1px][button_circle][space1px] Button for total
+
+#ENDSTRING()
+
+
+//=====
+// SEGMENT 0xC0
+// total: 13 cells
+//=====
+
+#STARTSTRING("report_mobilizationcost")
+// 5 cells
+#SETWIDTH(80)
+
+// 出撃費用
+Mobilization Cost
+
+#ENDSTRING()
+
+#STARTSTRING("report_prevbalance")
+// 5 cells
+#SETWIDTH(80)
+
+// 差し引き
+//Previous Balance
+Change in Balance
+
+#ENDSTRING()
+
+#STARTSTRING("report_tdfbudget")
+// 3 cells
+#SETWIDTH(48)
+
+// 警備隊総予算
+TDF Budget
+
+#ENDSTRING()
+
+
+//=====
+// SEGMENT 0xD0
+// total: 14 cells
+//=====
+
+//#STARTSTRING("report_digits")
+//// 10 cells
+//#SETWIDTH(160)
+//
+//// ０１２３４５６７８９‐
+//0123456789-
+//
+//#ENDSTRING()
+
+// here, we define the digits and hyphen used for
+// the report number
+
+// 1 cell
+#SETWIDTH(16)
+
+
+#STARTSTRING("report_num0")
+0
+#ENDSTRING()
+
+#STARTSTRING("report_num1")
+1
+#ENDSTRING()
+
+#STARTSTRING("report_num2")
+2
+#ENDSTRING()
+
+#STARTSTRING("report_num3")
+3
+#ENDSTRING()
+
+#STARTSTRING("report_num4")
+4
+#ENDSTRING()
+
+#STARTSTRING("report_num5")
+5
+#ENDSTRING()
+
+#STARTSTRING("report_num6")
+6
+#ENDSTRING()
+
+#STARTSTRING("report_num7")
+7
+#ENDSTRING()
+
+#STARTSTRING("report_num8")
+8
+#ENDSTRING()
+
+#STARTSTRING("report_num9")
+9
+#ENDSTRING()
+
+#STARTSTRING("report_num-")
+-
+#ENDSTRING()
+
+
+
+#STARTSTRING("report_storehouse")
+// 4 cells
+#SETWIDTH(64)
+
+// 倉庫
+Storehouse
+
+#ENDSTRING()
+
+
+//=====
+// SEGMENT 0xE0
+// total: 15 cells
+//=====
+
+#STARTSTRING("report_farmlandgate")
+// 3 cells
+#SETWIDTH(48)
+
+// 農地型ゲート　
+//Farmland-type Gate
+Farm Gate
+
+#ENDSTRING()
+
+#STARTSTRING("report_torinojrhigh")
+// 5 cells
+#SETWIDTH(80)
+
+// 鶏野中学校
+Torino Junior High
+
+#ENDSTRING()
+
+#STARTSTRING("report_crane")
+// 2 cells
+#SETWIDTH(32)
+
+// クレーン
+Crane
+
+#ENDSTRING()
+
+#STARTSTRING("report_reportnum_long")
+// 5 cells
+#SETWIDTH(80)
+// eh, we've got some extra room here, might as well throw in
+// the long version of this string.
+// looks a bit more "official" that way.
+
+// 第
+//Report N.
+//Report No.
+Financial Report #
+
+#ENDSTRING()
+
+
+
+
+#SETALIGNMODE(NONE)
+
+#SETERRORONOVERFLOW(0)
+#LOADTABLE("table/dandy_en.tbl")
+
+
+
+
+
+
+
+
+
+
+
+//====================================================
+// topwindow labels
+//====================================================
+
+#SETERRORONOVERFLOW(1)
+
+
+
+//=====
+// SEGMENT 0x00
+// total: 22 cells
+//=====
+
+#STARTSTRING("topwin_reception")
+// 4 cells
+#SETWIDTH(64)
+// 応接室
+Reception
+#ENDSTRING()
+
+#STARTSTRING("topwin_battlerec")
+// 6 cells
+#SETWIDTH(96)
+// 戦闘記録
+Battle Records
+#ENDSTRING()
+
+#STARTSTRING("topwin_controlroom")
+// 5 cells
+#SETWIDTH(80)
+//司令室
+Control Room
+#ENDSTRING()
+
+#STARTSTRING("topwin_financial")
+// 7 cells
+#SETWIDTH(112)
+//財政状態
+Financial Condition
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0x10
+// total: 23 cells
+//=====
+
+#STARTSTRING("topwin_publicity")
+// 4 cells
+#SETWIDTH(64)
+// 広報活動
+Publicity
+#ENDSTRING()
+
+#STARTSTRING("topwin_fundraising")
+// 5 cells
+#SETWIDTH(80)
+// 資金調達
+Fundraising
+#ENDSTRING()
+
+#STARTSTRING("topwin_purchaseequip")
+// 8 cells
+#SETWIDTH(128)
+// 装備購入
+Purchase Equipment
+#ENDSTRING()
+
+#STARTSTRING("topwin_enhancearmor")
+// 6 cells
+#SETWIDTH(96)
+// 装甲強化
+Enhance Armor
+#ENDSTRING()
+
+
+
+
+//=====
+// SEGMENT 0x20
+// total: 16 cells
+//=====
+
+#STARTSTRING("topwin_currentequip")
+// 7 cells
+#SETWIDTH(112)
+// 現在の装備
+Current Equipment
+#ENDSTRING()
+
+#STARTSTRING("topwin_hangar")
+// 3 cells
+#SETWIDTH(48)
+// 格納庫
+Hangar
+#ENDSTRING()
+
+#STARTSTRING("topwin_robotabil")
+// 6 cells
+#SETWIDTH(96)
+// ロボット性能
+Robot Abilities
+#ENDSTRING()
+
+
+
+
+//=====
+// SEGMENT 0x30
+// total: 17 cells
+//=====
+
+#SETALIGNMODE(LEFT)
+#STARTSTRING("topwin_developweapons")
+// 9 cells
+#SETWIDTH(144)
+// 新兵器開発
+//Develop New Weapons
+
+// "develop new weapons" is a bit too long and overlaps
+// the "budget" label
+Develop Weapons
+#ENDSTRING()
+#SETALIGNMODE(NONE)
+
+#STARTSTRING("topwin_enhancemotor")
+// 8 cells
+#SETWIDTH(128)
+// メガモーター強化
+Enhance Mega Motor
+#ENDSTRING()
+
+
+
+
+//=====
+// SEGMENT 0x40
+// total: 11 cells
+//=====
+
+#SETALIGNMODE(LEFT)
+//#SETPADWIDTH(144)
+#STARTSTRING("topwin_budget1")
+// 9 cells
+#SETWIDTH(126)
+// 資金概算　　　　　億円
+//Budget        hundred million yen
+Budget:
+#ENDSTRING()
+//#SETPADWIDTH(-1)
+#SETALIGNMODE(NONE)
+
+#STARTSTRING("topwin_budget2")
+// 2 cells
+#SETWIDTH(32)
+#SETPADWIDTH(48)
+//hm￥
+// changed to display in millions of yen instead
+mil.￥
+#ENDSTRING()
+#SETPADWIDTH(-1)
+
+
+
+
+//=====
+// SEGMENT 0x50
+// total: 10 cells
+//=====
+
+// this is reserved space for the budget numbers.
+// its position is hardcoded in the executable,
+// so don't move it.
+
+#SETALIGNMODE(LEFT)
+#SETPADWIDTH(160)
+#STARTSTRING("topwin_spaces")
+// 10 cells
+#SETWIDTH(140)
+// 　　　　　　　　　　
+ 
+#ENDSTRING()
+#SETPADWIDTH(-1)
+#SETALIGNMODE(NONE)
+
+
+
+//=====
+// SEGMENT 0x60
+// total: 7 cells
+//=====
+
+#STARTSTRING("topwin_vordan")
+// 7 cells
+#SETWIDTH(112)
+// ジェットロボ　ヴォーダン
+Jet Robot Vordan
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0x70
+// total: 8 cells
+//=====
+
+#STARTSTRING("topwin_gareth")
+// 8 cells
+#SETWIDTH(128)
+// スチームロボ　ガレス
+Steam Robot Gareth
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0x80
+// total: 8 cells
+//=====
+
+#STARTSTRING("topwin_lionel")
+// 8 cells
+#SETWIDTH(128)
+// 原子力ロボ　ライオネル
+Atomic Robot Lionel
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0x90
+// total: 9 cells
+//=====
+
+#STARTSTRING("topwin_perceval")
+// 9 cells
+#SETWIDTH(144)
+// 電子ロボ　ペルスヴァル
+Electron Robot Perceval
+#ENDSTRING()
+
+
+
+//=====
+// SEGMENT 0xA0
+// total: 6 cells
+//=====
+
+#STARTSTRING("topwin_pocketstation")
+
+#SETALIGNMODE(LEFT)
+
+// 6 cells
+#SETWIDTH(96)
+// ポケットステーション
+//Pocket Station
+PocketStation
+#ENDSTRING()
+
+
+#SETALIGNMODE(NONE)
+
+#SETERRORONOVERFLOW(0)
+#SETSIZE(215, 3)
+
+
+
+
+//====================================================
+// miyuki shop
+//====================================================
+
+#SETERRORONOVERFLOW(1)
+
+#SETALIGNMODE(LEFT)
+#SETWIDTH(32)
+
+//[TEXT]
+#STARTSTRING("miyuki_item_price_unit")
+
+// 億円
+//         hundred million yen
+//hm￥
+
+// now using millions of yen
+mil.￥
+
+
+#ENDSTRING()
+
+#SETALIGNMODE(NONE)
+
+
+
+#SETERRORONOVERFLOW(0)
+
+#SETSIZE(215, 3)
+
+
+
+
+//====================================================
+// financial condition
+//====================================================
+
+#SETPADWIDTH(32)
+
+#STARTSTRING("financial_condition_zeroyen")
+// alternate string used for listing zero numbers
+
+[fw_0]￥
+
+#ENDSTRING()
+
+#SETPADWIDTH(-1)
+
+
+
+
+//====================================================
+// robot explanations
+//====================================================
+
+//=====
+// attack level indicators
+//=====
+
+#SETPADWIDTH(48)
+
+#STARTSTRING("robotexplain_level_label")
+
+// レベル
+Level
+
+#ENDSTRING()
+
+#SETPADWIDTH(-1)
+
+
+
+#STARTSTRING("robotexplain_level_0")
+
+// ０
+[fw_0]
+
+#ENDSTRING()
+
+#STARTSTRING("robotexplain_level_1")
+
+// １
+[fw_1]
+
+#ENDSTRING()
+
+#STARTSTRING("robotexplain_level_2")
+
+// ２
+[fw_2]
+
+#ENDSTRING()
+
+#STARTSTRING("robotexplain_level_3")
+
+// ３
+[fw_3]
+
+#ENDSTRING()
+
+
+
+//=====
+// mobilization costs (now separate from label)
+//=====
+
+#SETERRORONOVERFLOW(1)
+#SETWIDTH(126)
+#SETPADWIDTH(144)
+#SETALIGNMODE(RIGHT)
+
+#STARTSTRING("robotexplain_vordan_cost")
+
+5 billion yen
+
+#ENDSTRING()
+
+#STARTSTRING("robotexplain_gareth_cost")
+
+2.5 billion yen
+
+#ENDSTRING()
+
+#STARTSTRING("robotexplain_lionel_cost")
+
+12 billion yen
+
+#ENDSTRING()
+
+#STARTSTRING("robotexplain_perceval_cost")
+
+4 billion yen
+
+#ENDSTRING()
+
+#SETALIGNMODE(NONE)
+#SETSIZE(215, 3)
+#SETPADWIDTH(-1)
+#SETERRORONOVERFLOW(0)
+
+//====================================================
+// camelon's counterattack part 2 voiceover subtitles
+//====================================================
+
+#STARTSTRING("ccounter_subs_dlog")
+
+\v00
+
+\q
+
+\p20
+\s00
+
+// キャメロン号の恐るべき力の前にヴォーダンが崩れ落ちた。
+Vordan has fallen before Camelon's terrible might.
+// 5.02 sec
+\p60
+\p60
+\p60
+\p60
+\p40
+\c
+\s00
+
+// そして今、守までが倒れ落している。
+//And now, Mamoru's life is seemingly over.
+And now, it looks like even Mamoru is done for.
+// 4.34 sec
+\p60
+\p60
+\p60
+\p50
+\c
+\s00
+
+// 鶏野はもう終わりなのか？
+//Is this the end of Torino?
+Is this the end for Torino?
+// 2.19 sec
+\p60
+\p51
+\c
+\s00
+
+// 世界は怪ロボットに滅ばされてしまうのか？
+Will the Enigmabots destroy the world?
+// 3.54 sec
+\p60
+\p60
+\p67
+\c
+\s00
+
+// がんばれ、守！
+Hang in there, Mamoru!
+// 2.11 sec
+\p60
+\p47
+\c
+\s00
+
+// がんばれ、鶏野警備隊！
+Hang in there, Torino Defense Force!
+// 2.62 sec
+\p60
+\p60
+\p20
+\c
+
+\t
+
+#ENDSTRING()
+
+
+
+#SETERRORONOVERFLOW(1)
+#SETWIDTH(256)
+#SETALIGNMODE(CENTER)
+
+#STARTSTRING("ccounter_subs_1-1")
+
+Vordan has fallen before Camelon's
+
+#ENDSTRING()
+
+#STARTSTRING("ccounter_subs_1-2")
+
+terrible might.
+
+#ENDSTRING()
+
+#STARTSTRING("ccounter_subs_2-1")
+
+//And now, Mamoru's life is seemingly over.
+And now, it looks like even Mamoru
+
+#ENDSTRING()
+
+#STARTSTRING("ccounter_subs_2-2")
+
+is done for.
+
+#ENDSTRING()
+
+#STARTSTRING("ccounter_subs_3-1")
+
+//Is this the end of Torino?
+Is this the end for Torino?
+
+#ENDSTRING()
+
+#STARTSTRING("ccounter_subs_4-1")
+
+Will the Enigmabots destroy the world?
+
+#ENDSTRING()
+
+#STARTSTRING("ccounter_subs_5-1")
+
+Hang in there, Mamoru!
+
+#ENDSTRING()
+
+#STARTSTRING("ccounter_subs_6-1")
+
+Hang in there, Torino Defense Force!
+
+#ENDSTRING()
+
+
+
+
+
+#SETALIGNMODE(NONE)
+#SETSIZE(215, 3)
+#SETERRORONOVERFLOW(0)
+
+
+//====================================================
+// deployment scene subtitles
+//====================================================
+
+#SETERRORONOVERFLOW(1)
+#SETWIDTH(256)
+#SETALIGNMODE(CENTER)
+
+
+
+//================
+// vordan full
+//================
+
+#STARTSTRING("robosel_vordan_full_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_2-1")
+
+// 2
+Jet Engine, activate.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_3-1")
+
+// 3
+Jet Converter, start.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_5-1")
+
+// 5
+Vordan, prepare for launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_6-1")
+
+// 6
+Five seconds to launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_7-1")
+
+// 7
+Four.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_8-1")
+
+// 8
+Three.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_9-1")
+
+// 9
+Two.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_10-1")
+
+// 10
+One.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_11-1")
+
+// 11
+Vordan, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// gareth full
+//================
+
+#STARTSTRING("robosel_gareth_full_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_2-1")
+
+// 2
+Increasing Steam Engine temperature.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_3-1")
+
+// 3
+Gear System, check.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_4-1")
+
+// 4
+//Energy conversion efficiency has reached 50%.
+Energy conversion efficiency at 50%.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_5-1")
+
+// 5
+Gareth, prepare for launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_6-1")
+
+// 6
+Five seconds to launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_7-1")
+
+// 7
+Four.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_8-1")
+
+// 8
+Three.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_9-1")
+
+// 9
+Two.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_10-1")
+
+// 10
+One.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_11-1")
+
+// 11
+Gareth, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// lionel full
+//================
+
+#STARTSTRING("robosel_lionel_full_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_2-1")
+
+// 2
+Atomic Engine, activate.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_3-1")
+
+// 3
+Atomic Converter, start.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_5-1")
+
+// 5
+Lionel, prepare for launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_6-1")
+
+// 6
+Five seconds to launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_7-1")
+
+// 7
+Four.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_8-1")
+
+// 8
+Three.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_9-1")
+
+// 9
+Two.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_10-1")
+
+// 10
+One.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_11-1")
+
+// 11
+Lionel, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// perceval full
+//================
+
+#STARTSTRING("robosel_perceval_full_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_2-1")
+
+// 2
+//Mega Battery is fully charged.
+Mega Battery fully charged.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_3-1")
+
+// 3
+Giga Actuator, check.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_5-1")
+
+// 5
+Perceval, prepare for launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_6-1")
+
+// 6
+Five seconds to launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_7-1")
+
+// 7
+Four.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_8-1")
+
+// 8
+Three.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_9-1")
+
+// 9
+Two.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_10-1")
+
+// 10
+One.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_11-1")
+
+// 11
+Perceval, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// vordan short
+//================
+
+#STARTSTRING("robosel_vordan_short_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_short_2-1")
+
+// 2
+Jet Engine, activate.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_short_3-1")
+
+// 3
+Jet Converter, start.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_short_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_short_5-1")
+
+// 5
+Vordan, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// gareth short
+//================
+
+#STARTSTRING("robosel_gareth_short_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_short_2-1")
+
+// 2
+Increasing Steam Engine temperature.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_short_3-1")
+
+// 3
+Gear System, check.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_short_4-1")
+
+// 4
+//Energy conversion efficiency has reached 50%.
+Energy conversion efficiency at 50%.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_short_5-1")
+
+// 5
+Gareth, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// lionel short
+//================
+
+#STARTSTRING("robosel_lionel_short_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_short_2-1")
+
+// 2
+Atomic Engine, activate.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_short_3-1")
+
+// 3
+Atomic Converter, start.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_short_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_short_5-1")
+
+// 5
+Lionel, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// perceval short
+//================
+
+#STARTSTRING("robosel_perceval_short_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_short_2-1")
+
+// 2
+Mega Battery is fully charged.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_short_3-1")
+
+// 3
+Giga Actuator, check.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_short_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_short_5-1")
+
+// 5
+Perceval, launch.
+
+
+#ENDSTRING()
+
+
+
+#SETALIGNMODE(NONE)
+#SETSIZE(215, 3)
+#SETERRORONOVERFLOW(0)
+
+
+//====================================================
+// end of file
+//====================================================
+
+#ENDFILE(000)
+

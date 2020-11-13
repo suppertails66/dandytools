@@ -1,0 +1,109 @@
+
+:init
+
+:MISSION_EX
+
+:G_00_01
+
+:OPEN0_0
+  queueLoad_0be    0x0 0x81
+  wait_089         
+  op015            0x0 0x140 0x0 0x140 0xF0
+  op016            0x0
+  setBgPic         0x0 0x140 0x0 0x140 0xF0 0x100 0x30 0x0
+  op00f            0x0 0x18 0xB4 0x4
+  op008            
+  op058            0x60 0x1
+  op04b            0x10
+  op069            0x0 0x2
+  op06c            0x0
+  op07d            0x0 0x12
+  op07e            0x0 0x0 "LP00"
+  op07d            0x1 0x13
+  op07e            0x1 0x1 "LP00"
+  setCam           "C010"
+
+:REPLAY
+  op026            0x0 0x0
+  op026            0x1 0x0
+  op054            0x0 0x3C
+  delay            0x3C
+  delay            0xFA
+  setCam           "C020"
+  delay            0x14A
+  delay            0x12C
+  setCam           "C040"
+  delay            0x168
+  setCam           "C050"
+  delay            0xD8
+  setCam           "C060"
+  delay            0xD8
+  delay            0x3C
+  setCam           "C070"
+  delay            0x1E
+  op126            0x1
+  delay            0x132
+  setCam           "C075"
+  op126            0x1
+  delay            0x3C
+  op126            0x1
+  delay            0x3C
+  op126            0x1
+  delay            0x1E
+  op126            0x1
+  delay            0x1E
+  op126            0x1
+  delay            0x78
+  op126            0x1
+  setCam           "C080"
+  op12e            0x0 0x3
+  delay            0x21C
+  op12f            0x3
+  delay            0x9C
+  op054            0xFF01 0x40
+  delay            0x40
+  jumpToLabel      &"SP_2"
+  stopScript       
+
+:SP_1END
+  op0eb            
+  jumpToLabel      &"REPLAY"
+  op046            
+
+:SP_2
+  op008            
+  op04b            0xF
+  op069            0x0 0x2
+  op06c            0x0
+  op04d            0x1 0x8
+  op06f            0x1 0x1 "ENEM"
+  op10a            
+  op119            0x0
+  setCam           "C001"
+  op054            0x0 0x40
+  delay            0x40
+  op057            0x1 0x0 0x0
+  op06e            0x1 "RL01" 0x32
+  op12e            0x1 0x3
+  delay            0xB4
+  op12f            0x3
+  delay            0x3C
+  op12e            0x2 0x3
+  wait_076         0x1
+  op12f            0x3
+  op119            0x1
+  setCam           "C002"
+  op070            
+  delay            0x80
+  op12e            0x3 0x3
+  op074            0x1 0x9 0x0
+  wait_071         0x1
+  delay            0x3C
+  op12f            0x3
+  delay            0x3C
+
+:SP_2END
+  op054            0xFF01 0x40
+  delay            0x40
+  op046            
+  jumpToLabel      &"OPEN0_0"

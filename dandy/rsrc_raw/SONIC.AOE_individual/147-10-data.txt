@@ -1,0 +1,12 @@
+[Settings]
+format=1
+grayscale=0
+numPalettes=2
+semiTransparency=0
+transparency=1
+unk1=320
+unk2=0
+unk3=448
+unk4=88
+unk5=256
+

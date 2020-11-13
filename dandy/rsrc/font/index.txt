@@ -1,0 +1,190 @@
+[Properties]
+numChars=0xB0
+charsPerRow=16
+gridW=16
+gridH=16
+autoWidthOffset=-1
+noKerning=1
+
+# digits
+
+[char0001]
+
+[char0002]
+
+[char0003]
+
+[char0004]
+
+[char0005]
+
+[char0006]
+
+[char0007]
+
+[char0008]
+
+[char0009]
+
+[char000A]
+
+[char001E]
+
+# period
+[char003F]
+
+# comma
+[char0040]
+
+# question mark
+[char0042]
+
+# apostrophe
+[char0043]
+firstKerningAgainstShortChars=-1
+secondKerningAgainstShortChars=-1
+
+# semicolon
+[char0044]
+
+# open quote
+[char0048]
+
+# close quote
+[char0049]
+
+# hyphen
+[char004B]
+
+# colon
+[char004C]
+
+# arrows
+
+[char0050]
+
+[char0051]
+
+[char0052]
+
+[char0053]
+
+# symbols
+
+[char0054]
+
+[char0055]
+
+[char0056]
+
+[char0057]
+
+[char0058]
+
+[char0059]
+
+# ellipsis
+[char005A]
+#glyphWidth=11
+#advanceWidth=11
+glyphWidth=12
+advanceWidth=12
+
+[char005B]
+
+[char005C]
+
+# fixed-width space 5px
+[char005D]
+glyphWidth=5
+advanceWidth=5
+
+# nothing
+[char005E]
+glyphWidth=0
+advanceWidth=0
+
+# space
+[char005F]
+glyphWidth=4
+advanceWidth=4
+
+# narrow space
+[char0060]
+glyphWidth=3
+advanceWidth=3
+
+# fixed-width digits + space
+
+[char00A0]
+glyphWidth=8
+advanceWidth=8
+
+[char00A1]
+glyphWidth=8
+advanceWidth=8
+
+[char00A2]
+glyphWidth=8
+advanceWidth=8
+
+[char00A3]
+glyphWidth=8
+advanceWidth=8
+
+[char00A4]
+glyphWidth=8
+advanceWidth=8
+
+[char00A5]
+glyphWidth=8
+advanceWidth=8
+
+[char00A6]
+glyphWidth=8
+advanceWidth=8
+
+[char00A7]
+glyphWidth=8
+advanceWidth=8
+
+[char00A8]
+glyphWidth=8
+advanceWidth=8
+
+[char00A9]
+glyphWidth=8
+advanceWidth=8
+
+# fixed-width space
+[char00AA]
+glyphWidth=8
+advanceWidth=8
+
+# 6px space
+[char00AB]
+glyphWidth=6
+advanceWidth=6
+
+# 1px space
+[char00AC]
+glyphWidth=1
+advanceWidth=1
+
+# 14px space
+[char00AD]
+glyphWidth=14
+advanceWidth=14
+
+# fixed-width comma
+[char00AE]
+#glyphWidth=8
+#advanceWidth=8
+glyphWidth=5
+advanceWidth=5
+
+# 8px space
+[char00AF]
+glyphWidth=8
+advanceWidth=8
+

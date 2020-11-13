@@ -1,0 +1,574 @@
+
+//====================================================
+// deployment scene subtitles
+//====================================================
+
+#SETERRORONOVERFLOW(1)
+#SETWIDTH(256)
+#SETALIGNMODE(CENTER)
+
+
+
+//================
+// vordan full
+//================
+
+#STARTSTRING("robosel_vordan_full_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_2-1")
+
+// 2
+Jet Engine, activate.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_3-1")
+
+// 3
+Jet Converter, start.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_5-1")
+
+// 5
+Vordan, prepare for launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_6-1")
+
+// 6
+Five seconds to launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_7-1")
+
+// 7
+Four.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_8-1")
+
+// 8
+Three.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_9-1")
+
+// 9
+Two.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_10-1")
+
+// 10
+One.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_full_11-1")
+
+// 11
+Vordan, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// gareth full
+//================
+
+#STARTSTRING("robosel_gareth_full_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_2-1")
+
+// 2
+Increasing Steam Engine temperature.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_3-1")
+
+// 3
+Gear System, check.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_4-1")
+
+// 4
+Energy conversion efficiency has reached 50%.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_5-1")
+
+// 5
+Gareth, prepare for launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_6-1")
+
+// 6
+Five seconds to launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_7-1")
+
+// 7
+Four.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_8-1")
+
+// 8
+Three.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_9-1")
+
+// 9
+Two.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_10-1")
+
+// 10
+One.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_full_11-1")
+
+// 11
+Gareth, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// lionel full
+//================
+
+#STARTSTRING("robosel_lionel_full_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_2-1")
+
+// 2
+Atomic Engine, activate.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_3-1")
+
+// 3
+Atomic Converter, start.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_5-1")
+
+// 5
+Lionel, prepare for launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_6-1")
+
+// 6
+Five seconds to launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_7-1")
+
+// 7
+Four.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_8-1")
+
+// 8
+Three.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_9-1")
+
+// 9
+Two.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_10-1")
+
+// 10
+One.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_full_11-1")
+
+// 11
+Lionel, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// perceval full
+//================
+
+#STARTSTRING("robosel_perceval_full_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_2-1")
+
+// 2
+Mega Battery is fully charged.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_3-1")
+
+// 3
+Giga Actuator, check.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_5-1")
+
+// 5
+Perceval, prepare for launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_6-1")
+
+// 6
+Five seconds to launch.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_7-1")
+
+// 7
+Four.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_8-1")
+
+// 8
+Three.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_9-1")
+
+// 9
+Two.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_10-1")
+
+// 10
+One.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_full_11-1")
+
+// 11
+Perceval, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// vordan short
+//================
+
+#STARTSTRING("robosel_vordan_short_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_short_2-1")
+
+// 2
+Jet Engine, activate.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_short_3-1")
+
+// 3
+Jet Converter, start.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_short_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_vordan_short_5-1")
+
+// 5
+Vordan, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// gareth short
+//================
+
+#STARTSTRING("robosel_gareth_short_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_short_2-1")
+
+// 2
+Increasing Steam Engine temperature.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_short_3-1")
+
+// 3
+Gear System, check.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_short_4-1")
+
+// 4
+Energy conversion efficiency has reached 50%.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_gareth_short_5-1")
+
+// 5
+Gareth, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// lionel short
+//================
+
+#STARTSTRING("robosel_lionel_short_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_short_2-1")
+
+// 2
+Atomic Engine, activate.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_short_3-1")
+
+// 3
+Atomic Converter, start.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_short_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_lionel_short_5-1")
+
+// 5
+Lionel, launch.
+
+
+#ENDSTRING()
+
+
+
+//================
+// perceval short
+//================
+
+#STARTSTRING("robosel_perceval_short_1-1")
+
+// 1
+Gate open.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_short_2-1")
+
+// 2
+Mega Battery is fully charged.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_short_3-1")
+
+// 3
+Giga Actuator, check.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_short_4-1")
+
+// 4
+Mega Motor, power on.
+
+
+#ENDSTRING()
+
+#STARTSTRING("robosel_perceval_short_5-1")
+
+// 5
+Perceval, launch.
+
+
+#ENDSTRING()
+
+
+
+#SETALIGNMODE(NONE)
+#SETSIZE(215, 3)
+#SETERRORONOVERFLOW(0)

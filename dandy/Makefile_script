@@ -1,0 +1,86 @@
+# IDIR := src
+# SRCDIR := src
+# ODIR := obj
+# LDIR :=
+# 
+# BLACKTDIR = ../blackt
+# LIBMDDIR = ../libmd
+# 
+# AR=ar
+# CXX=g++
+# # Compile only
+# CDEFINES = -DBLACKT_ENABLE_LIBPNG
+# #CLIBS = -lpng
+# CFLAGS = -std=gnu++11 -O2 -Wall -L${LIBMDDIR} -lmd -L${BLACKTDIR} -lblackt -lpng
+# CINCLUDES = -I${BLACKTDIR}/src -I${LIBMDDIR}/src
+# CXXFLAGS=$(CFLAGS) $(CDEFINES) $(CINCLUDES) -I$(IDIR)
+# 
+# LIBDEPS := $(LIBMDDIR)/libmd.a $(BLACKTDIR)/libblackt.a
+# 
+# TOOLSRCS := $(wildcard $(SRCDIR)/*.cpp)
+# TOOLSINDIR := $(patsubst %.cpp,%,$(TOOLSRCS))
+# TOOLS := $(notdir $(TOOLSINDIR))
+
+# SCENES := $(wildcard out/scenes/*)
+# SCENENAMES := $(notdir $(SCENES))
+# OUTFILES := $(patsubst out/scenes/%,out/disc/files/%,$(SCENES))
+# SCENEDEPS := $(wildcard out/scenes/**/*)
+
+# SCENENUMPATHS := $(wildcard scriptdism/new/*)
+# SCENENUMS := $(notdir $(SCENENUMPATHS))
+OUTFILES := $(patsubst scriptdism/new/%script.txt,out/scriptfiles/%0.bin,$(wildcard scriptdism/new/**/*.txt))
+
+#$(info [${OUTFILES}])
+
+.SECONDEXPANSION:
+
+all: dandy $(OUTFILES)
+#	echo $^
+
+dandy: out/script/script_wrapped.txt
+	make
+
+out/script/script_wrapped.txt: script/script.txt script/common.txt
+	mkdir -p out/script
+	./dandy_script_wrap "script/" "out/script/"
+
+#script: out/script/script_wrapped.txt
+#	mkdir -p out/script
+#	./dandy_script_wrap "script/" "out/script/"
+
+#$(OUTFILES): $$(patsubst out/disc/files/%,out/scenes/%/scene0_script.txt,$$@)
+#$(OUTFILES): out/scenes/$$(notdir $$@)/**
+# checking all the png files is a massive time drain, and
+# only a handful will ever actually be modified,
+# so the prerequisites here check only for script file modifications
+$(OUTFILES): scriptdism/new/$$(notdir $$(patsubst %/,%,$$(dir $$@)))/script.txt
+#	scriptFileNum=$(notdir $(patsubst %/,%,$(dir $@)))
+	mkdir -p out/scriptfiles/$(notdir $(patsubst %/,%,$(dir $@)))
+	./dandy_script_asm \
+	"$<" \
+	"rsrc_raw/ADV.PAC_unpacked/$(notdir $(patsubst %/,%,$(dir $@)))/0.bin" \
+	"$(notdir $(patsubst %/,%,$(dir $@)))" \
+	"out/script/" \
+	"out/img/font.bin" \
+	"$@"
+#	cp "$@" "out/ADV.PAC_unpacked/$(notdir $(patsubst %/,%,$(dir $@)))"
+#	./dandy_pac "out/ADV.PAC_unpacked/$(notdir $(patsubst %/,%,$(dir $@)))/" 6 "out/ADV.PAC/$(notdir $(patsubst %/,%,$(dir $@))).bin"
+	
+#	./yumimi/ymm_scenebuild_subs "out/scenes/$(notdir $@)/" "$@" "script.txt" "font/12px/" "$(notdir $@)"
+
+#	echo $@
+
+#$(SCENEDEPS):
+#	echo $@
+
+#$(TOOLS): $(SRCDIR)/$$@.cpp $(LIBDEPS) $(BLACKTDIR)/libblackt.a
+#	$(CXX) $(SRCDIR)/$@.cpp $(OBJ) -o $(notdir $@) $(CXXFLAGS)
+
+.PHONY: dandy script clean
+
+#cleanme:
+#	rm -f $(TOOLS)
+
+clean:
+	rm -f $(OUTFILES)
+	rm -f "out/script"

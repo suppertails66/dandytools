@@ -1,0 +1,89 @@
+  
+  ; segement 0x0-b0
+  charSeqToVram   0xB0 0x0  <COMMON_report_x>
+  
+  ; segment 0x10
+  charSeqToVram   0x00 0x10 <COMMON_report_privatehouse>
+  charSeqToVram   0x40 0x10 <COMMON_report_building>
+  charSeqToVram   0x60 0x10 <COMMON_report_car>
+  charSeqToVram   0x70 0x10 <COMMON_report_ship>
+  charSeqToVram   0x90 0x10 <COMMON_report_container>
+  charSeqToVram   0xC0 0x10 <COMMON_report_trafficlight>
+  
+  ; segment 0x20
+  charSeqToVram   0x00 0x20 <COMMON_report_miyukishouse>
+  charSeqToVram   0x40 0x20 <COMMON_report_train>
+  charSeqToVram   0x60 0x20 <COMMON_report_fujitsuco>
+  charSeqToVram   0x90 0x20 <COMMON_report_uoyamafish>
+  
+  ; segment 0x30
+  charSeqToVram   0x00 0x30 <COMMON_report_supermarket>
+  charSeqToVram   0x40 0x30 <COMMON_report_transport_ship>
+  charSeqToVram   0x90 0x30 <COMMON_report_convenience_store>
+  
+  ; segment 0x40
+  charSeqToVram   0x00 0x40 <COMMON_report_human_office>
+  charSeqToVram   0x50 0x40 <COMMON_report_station>
+  charSeqToVram   0x70 0x40 <COMMON_report_shrine>
+  charSeqToVram   0x90 0x40 <COMMON_report_tokyo_bridge>
+  
+  ; segment 0x50
+  charSeqToVram   0x00 0x50 <COMMON_report_ozaconglomerate>
+  charSeqToVram   0x70 0x50 <COMMON_report_highway>
+  charSeqToVram   0xA0 0x50 <COMMON_report_tokyooffice1>
+  
+  ; segment 0x60
+  charSeqToVram   0x00 0x60 <COMMON_report_ironcrab>
+  charSeqToVram   0x30 0x60 <COMMON_report_atomicresearch>
+  
+  ; segment 0x70
+  charSeqToVram   0x00 0x70 <COMMON_report_powerplanta>
+  charSeqToVram   0x60 0x70 <COMMON_report_powerplantb>
+  
+  ; segment 0x80
+  charSeqToVram   0x00 0x80 <COMMON_report_harborfacil>
+  charSeqToVram   0x50 0x80 <COMMON_report_viewingplatform>
+  charSeqToVram   0xA0 0x80 <COMMON_report_tokyooffice2>
+  
+  ; segment 0x90
+  charSeqToVram   0x00 0x90 <COMMON_report_tokyocongress>
+  charSeqToVram   0x70 0x90 <COMMON_report_buildinggate>
+  charSeqToVram   0xB0 0x90 <COMMON_report_torinopowerplant>
+  
+  ; segment 0xA0
+  charSeqToVram   0x00 0xA0 <COMMON_report_tdfco>
+;  charSeqToVram   0x80 0xA0 <COMMON_report_reportnum>
+  ; decided to lengthen and move this
+  charSeqToVram   0xA0 0xE0 <COMMON_report_reportnum_long>
+;  charSeqToVram   0xB0 0xA0 <COMMON_report_reportnum2>
+;  charSeqToVram   0xB0 0xA0 <COMMON_report_reportnum3>
+  charSeqToVram   0xB0 0xA0 <COMMON_report_completionbonus>
+  
+  ; segment 0xB0
+  charSeqToVram   0x00 0xB0 <COMMON_report_losses>
+  charSeqToVram   0x20 0xB0 <COMMON_report_circletotal>
+  
+  ; segment 0xC0
+  charSeqToVram   0x00 0xC0 <COMMON_report_mobilizationcost>
+  charSeqToVram   0x50 0xC0 <COMMON_report_prevbalance>
+  charSeqToVram   0xA0 0xC0 <COMMON_report_tdfbudget>
+  
+  ; segment 0xD0
+;  charSeqToVram   0x00 0xD0 <COMMON_report_digits>
+  charSeqToVram   0x00 0xD0 <COMMON_report_num0>
+  charSeqToVram   0x10 0xD0 <COMMON_report_num1>
+  charSeqToVram   0x20 0xD0 <COMMON_report_num2>
+  charSeqToVram   0x30 0xD0 <COMMON_report_num3>
+  charSeqToVram   0x40 0xD0 <COMMON_report_num4>
+  charSeqToVram   0x50 0xD0 <COMMON_report_num5>
+  charSeqToVram   0x60 0xD0 <COMMON_report_num6>
+  charSeqToVram   0x70 0xD0 <COMMON_report_num7>
+  charSeqToVram   0x80 0xD0 <COMMON_report_num8>
+  charSeqToVram   0x90 0xD0 <COMMON_report_num9>
+  charSeqToVram   0xA0 0xD0 <COMMON_report_num->
+  charSeqToVram   0xB0 0xD0 <COMMON_report_storehouse>
+  
+  ; segment 0xE0
+  charSeqToVram   0x00 0xE0 <COMMON_report_farmlandgate>
+  charSeqToVram   0x30 0xE0 <COMMON_report_torinojrhigh>
+  charSeqToVram   0x80 0xE0 <COMMON_report_crane>

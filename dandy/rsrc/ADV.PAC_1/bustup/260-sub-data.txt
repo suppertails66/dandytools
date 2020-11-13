@@ -1,0 +1,16 @@
+[Settings]
+format=2
+formatFlag1=0
+gpuDstHi=0
+gpuDstLo=0
+grayscale=0
+hasPalette=0
+headerUnk=16
+headerUnk2=0
+headerUnk3=1
+paletteUnk0=0
+paletteUnk2=0
+paletteUnk3=0
+semiTransparency=0
+transparency=1
+
