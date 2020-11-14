@@ -3961,8 +3961,10 @@ Let's enhance the Mega Motor.
 // いいでしょう。\n
 // ただし、お金がかかりますよ。\n
 // ロボットを選んで下さい。
-Very well.\n
-But keep in mind that this requires a lot of funds.\n
+//Very well.\n
+//But keep in mind that this requires a lot of funds.\n
+//Choose a robot.
+Very well. But keep in mind that this requires a lot of funds.\n
 Choose a robot.
 \w
 \c
@@ -9963,9 +9965,10 @@ Next, moving backwards.
 // \@01Ｒ２\@00で右足を後ろに。\n
 // \@01Ｌ２\@00で左足を後ろに。\n
 // 交互に押して後退です。
-Press \@01R2\@00 to move the right leg back,\n
-and press \@01L2\@00 to move the left leg back.\n
-Alternate them to move backwards.
+//Press \@01R2\@00 to move the right leg back,\n
+//and press \@01L2\@00 to move the left leg back.\n
+//Alternate them to move backwards.
+Press \@01R2\@00 to move the right leg back, and \@01L2\@00 to move the left leg back. Alternate them to move backwards.
 \w
 \c
 
@@ -11857,8 +11860,7 @@ The goal of your training is to have Vordan lift that container.
 // わかっていますね。
 //First you'll have to personally move and confirm the presence of the container.\n
 //You know how to do that, right?
-First, you'll have to personally move and confirm the presence of the container.\n
-You know how to do that, right?
+First, you'll need to personally move and confirm the container's presence. You know how to do that, right?
 \w
 \c
 
@@ -30030,7 +30032,7 @@ We shouldn't have gone independent.
 // に謝りなさい。
 //It won't be long before we go bankrupt at this rate.\n
 //Contact the Oza Corporation and apologize before it's too late.
-We'll be bankrupt in a heartbeat at this rate. Contact the Oza Corporation and apologize before it's too late.
+We'll be bankrupt in a heartbeat at this rate. Contact Oza Corporation and apologize before it's too late.
 \w
 \c
 
@@ -40360,9 +40362,10 @@ Where did that Enigmabot come from...?
 // それより、\n
 // アスモデウスの調査をしよう。\n
 // もし、あれが破壊神だったら……
-First things first.\n
-We should take a better look at Asmodeus.\n
-If it really is the God of Destruction, then―
+//First things first.\n
+//We should take a better look at Asmodeus.\n
+//If it really is the God of Destruction, then―
+First things first―we should take a better look at Asmodeus. If it really is the God of Destruction, then―
 \w
 \c
 
@@ -41857,8 +41860,10 @@ You must have the devil's own luck.
 // 動かないで！\n
 // Ｄ機関の秘密は、私がもらうわ。\n
 // あなたたちは邪魔よ！
-Don't you move!\n
-The secret of the D-Engine is mine, and mine alone!\n
+//Don't you move!\n
+//The secret of the D-Engine is mine, and mine alone!\n
+//I won't let anyone stand in my way!
+Don't you move! The secret of the D-Engine is mine, and mine alone!\n
 I won't let anyone stand in my way!
 \w
 \c
@@ -50404,8 +50409,9 @@ The ultimate robot, loaded with a perpetual motion engine...
 
 // 今、アスモデウスは整備中です。\n
 // この作戦では使用できません。
-Asmodeus is undergoing maintenance.\n
-You won't be able to use it in this operation.
+//Asmodeus is undergoing maintenance.\n
+//You won't be able to use it in this operation.
+Asmodeus is undergoing maintenance. You won't be able to use it in this operation.
 \w
 \c
 
@@ -52845,7 +52851,11 @@ Let's start with walking.
 //Press the \@01R1\@00 Button to move the right leg forward.\n
 //Press the \@01L1\@00 Button to move the left leg forward.\n
 //Alternate these buttons to walk.
-Press the \@01R1\@00 Button to move the right leg forward. Press the \@01L1\@00 Button to move the left leg forward. Alternate these buttons to walk.
+Press the \@01R1\@00 Button to move the right leg forward. Press the \@01L1\@00 Button to move the left leg forward.
+\w
+\c
+Alternate these buttons to walk.
+
 \w
 \c
 
