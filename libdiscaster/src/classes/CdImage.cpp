@@ -94,9 +94,7 @@ namespace Discaster {
   
   /**
    * Adds zero-filled data sectors to CD.
-   * These will be generated according to the current disc mode (e.g. MODE1)
-   * and will contain the relevant sector header data, but the data area will
-   * be blank.
+   * The generated sectors will be totally blank (no mode, no sync data, etc.)
    *
    * arg0 numSectors Count of sectors to generate.
    */
@@ -104,6 +102,24 @@ namespace Discaster {
     int numSectors = args.at(0).intValue();
     
     Object obj = BlobObject("addNullSectors");
+    obj.setMember("numSectors", numSectors);
+    addBuildCommand(self, obj);
+    
+    return NULL;
+  }
+  
+  /**
+   * Adds empty data sectors to CD.
+   * These will be generated according to the current disc mode (e.g. MODE1)
+   * and will contain the relevant sector header data, but the data area will
+   * be blank.
+   *
+   * arg0 numSectors Count of sectors to generate.
+   */
+  static ParseNode* addEmptySectors(Object* env, Object* self, ObjectArray args) {
+    int numSectors = args.at(0).intValue();
+    
+    Object obj = BlobObject("addEmptySectors");
     obj.setMember("numSectors", numSectors);
     addBuildCommand(self, obj);
     
@@ -338,6 +354,16 @@ namespace Discaster {
         test.open("sector8.bin");
         cd.writeData((BlackT::TByte*)test.data().data() + 0x18, 0x800); */
       }
+      else if (buildCmdName.compare("addEmptySectors") == 0) {
+        int numSectors = buildCmdObj.getMember("numSectors").intValue();
+        
+        if (config.debugOutput()) {
+          std::cout << "Sector " << cd.currentSectorNum() << ": "
+            << "Adding " << numSectors << " empty sector(s)" << std::endl;
+        }
+        
+        cd.addEmptySectors(numSectors);
+      }
       else if (buildCmdName.compare("addLabel") == 0) {
         DiscasterString labelName
           = buildCmdObj.getMember("labelName").stringValue();
@@ -540,6 +566,7 @@ namespace Discaster {
     addFunction("exportBinCue", exportBinCue);
     addFunction("addTrackIndex", addTrackIndex);
     addFunction("addNullSectors", addNullSectors);
+    addFunction("addEmptySectors", addEmptySectors);
     addFunction("addLabel", addLabel);
     addFunction("addRawData", addRawData);
     addFunction("addRawDataWithSkippedInitialSectors",

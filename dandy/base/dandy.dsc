@@ -86,6 +86,7 @@ CdImage cd
     cd.addModeChange("MODE2FORM1")
     cd.addTrackIndex(1)
     cd.addIsoFilesystem(isoFs)
+    cd.addEmptySectors(150)
   cd.addTrackEnd()
   
   cd.addTrackStart(2, "AUDIO")

@@ -161,13 +161,22 @@ namespace Discaster {
     void padToSectorBoundary();
     
     /**
-     * Adds totally empty (zero-filled) sectors to the CD.
+     * Adds totally null (zero-filled) sectors to the CD.
      * If a sector is already active, it will be completed (not counting as one
      * of the added null sectors), then the null sector(s) will be added.
      *
      * @arg numSectors Number of sectors to add.
      */
     void addNullSectors(int numSectors);
+    
+    /**
+     * Adds empty (headered, but zero-filled) sectors to the CD.
+     * If a sector is already active, it will be completed (not counting as one
+     * of the added empty sectors), then the empty sector(s) will be added.
+     *
+     * @arg numSectors Number of sectors to add.
+     */
+    void addEmptySectors(int numSectors);
     
     /**
      * Adds empty (Data Area is zero-filled) sectors to the CD.

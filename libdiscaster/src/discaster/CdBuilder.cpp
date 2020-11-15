@@ -1441,6 +1441,37 @@ namespace Discaster {
 //    currentSectorMode_ = old_currentSectorMode;
   }
   
+  void CdBuilder::addEmptySectors(int numSectors) {
+    if (sectorIsActive()) padToSectorBoundary();
+    
+    // save XA flags
+    bool old_xaVideoFlag = xaVideoFlag_;
+    bool old_xaAudioFlag = xaAudioFlag_;
+    bool old_xaDataFlag = xaDataFlag_;
+    bool old_xaTriggerFlag = xaTriggerFlag_;
+    bool old_xaRealTimeFlag = xaRealTimeFlag_;
+    
+    // zero the XA flags
+    xaVideoFlag_ = false;
+    xaAudioFlag_ = false;
+    xaDataFlag_ = false;
+    xaTriggerFlag_ = false;
+    xaRealTimeFlag_ = false;
+    
+    for (int i = 0; i < numSectors; i++) {
+//      prepNextSector(currentSectorMode_);
+//      finishSector();
+      prepNextSector(currentSectorMode_);
+      finishSector();
+    }
+    
+    xaVideoFlag_ = old_xaVideoFlag;
+    xaAudioFlag_ = old_xaAudioFlag;
+    xaDataFlag_ = old_xaDataFlag;
+    xaTriggerFlag_ = old_xaTriggerFlag;
+    xaRealTimeFlag_ = old_xaRealTimeFlag;
+  }
+  
   void CdBuilder::addPadSectors(int numSectors) {
     if (sectorIsActive()) padToSectorBoundary();
     
@@ -1792,6 +1823,19 @@ namespace Discaster {
         }
         
         addNullSectors(numSectors);
+      }
+      else if (buildCmdName.compare("addEmptySectors") == 0) {
+        int numSectors = buildCmdObj.getMemberInt("numSectors");
+        
+        if (config.debugOutput()) {
+          std::cout << "Sector " << currentSectorNum() << ": "
+            << "Writing "
+            << numSectors
+            << " empty sector(s) to ISO"
+            << std::endl;
+        }
+        
+        addEmptySectors(numSectors);
       }
       else if (buildCmdName.compare("addTypeLPathTable") == 0) {
         isoWithAssociates.typeLPathTable = generatePathTable(env, iso);
