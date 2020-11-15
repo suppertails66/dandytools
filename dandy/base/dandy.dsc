@@ -22,7 +22,8 @@ IsoDescriptorSetTerminator descTerminator
 
 IsoFilesystem isoFs
 isoFs.setFormat("CDXA")
-isoFs.setSystemArea("base/sysarea.bin")
+//isoFs.setSystemArea("base/sysarea.bin")
+isoFs.setRawSectorSystemArea("base/sysarea_raw.bin")
 isoFs.importDirectoryListing("out/files")
 
 isoFs.insertDiscPointer("CD1.DA", ":track2start", ":track2end")
