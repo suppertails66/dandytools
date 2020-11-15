@@ -206,7 +206,7 @@ namespace Discaster {
     }
     else {
       throw TGenericException(T_SRCANDLINE,
-                              "modeStringToId(std::string)",
+                              "formatStringToId(std::string)",
                               std::string("Unknown CD format: ")
                                 + strOrig);
     }

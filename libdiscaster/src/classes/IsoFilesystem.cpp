@@ -329,7 +329,7 @@ namespace Discaster {
     ifs.open(inputFile.c_str());
     if (ifs.size() <= 0) {
       throw TGenericException(T_SRCANDLINE,
-                              "importDirectoryListing()",
+                              "setSystemArea()",
                               std::string("Error opening System Area file ")
                                 + "\""
                                 + inputFile
@@ -343,6 +343,46 @@ namespace Discaster {
     
     if (config.debugOutput()) {
       std::cout << "Imported System Area of "
+        << data.size() << " bytes" << std::endl;
+    }
+    
+    return NULL;
+  }
+  
+  /**
+   * Imports a raw-sector file to use as the System Area.
+   *
+   * arg0 inputFile Folder on disk to import.
+   */
+  static ParseNode* setRawSectorSystemArea(
+      Object* env, Object* self, ObjectArray args) {
+    std::string inputFile = args.at(0).stringValue();
+    
+    if (config.debugOutput()) {
+      std::cout << "Importing raw-sector System Area file: "
+        << inputFile << std::endl;
+    }
+    
+    TBufStream ifs;
+    ifs.open(inputFile.c_str());
+    if (ifs.size() <= 0) {
+      throw TGenericException(T_SRCANDLINE,
+                              "setRawSectorSystemArea()",
+                              std::string("Error opening raw-sector")
+                                + " System Area file "
+                                + "\""
+                                + inputFile
+                                + "\""
+                                + " (does not exist?)");
+    }
+    
+    std::string data;
+    data.assign(ifs.data().data(), ifs.size());
+    self->getMember("systemArea").setStringValue(data);
+    self->getMember("systemAreaIsRawSector").setIntValue(1);
+    
+    if (config.debugOutput()) {
+      std::cout << "Imported raw-sector System Area of "
         << data.size() << " bytes" << std::endl;
     }
     
@@ -873,6 +913,7 @@ namespace Discaster {
     addFunction("importDirectoryListing", importDirectoryListing);
     addFunction("importRawSectorFile", importRawSectorFile);
     addFunction("setSystemArea", setSystemArea);
+    addFunction("setRawSectorSystemArea", setRawSectorSystemArea);
     addFunction("insertDiscPointer", insertDiscPointer);
     addFunction("setFormat", setFormat);
     addFunction("addPrimaryVolumeDescriptor", addPrimaryVolumeDescriptor);
@@ -905,6 +946,9 @@ namespace Discaster {
     setMember("directoryListing", rootDirectoryListing);
     // the 16-sector (max) system area of the disc, stored as a string
     setMember("systemArea", StringObject());
+    // flag indicating whether or not system area string uses raw 0x930-byte
+    // sectors
+    setMember("systemAreaIsRawSector", 0);
     // TODO: only 0x800 supported for now
     setMember("logicalBlockSize", 0x800);
     // standard CD-ROM/CD-XA selector

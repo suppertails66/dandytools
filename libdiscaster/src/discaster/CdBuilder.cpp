@@ -397,6 +397,9 @@ namespace Discaster {
                                  + " left");
     }
     
+    // save current sector mode so we can restore it afterward
+    CdModeIds::CdModeId oldSectorMode = currentSectorMode_;
+    
     // copy sectors from source to output stream
     for (int i = 0; i < numSectors; i++) {
 //      int basePos = writePos_;
@@ -440,6 +443,9 @@ namespace Discaster {
       writePos_ += CdConsts::physicalSectorSize;
       cdbuf_.seekp(newStreamPos);
     }
+    
+    // restore original sector mode
+    currentSectorMode_ = oldSectorMode;
   }
   
   void CdBuilder::writeDataWithXaFlags(BlackT::TStream& ifs,
@@ -1490,19 +1496,40 @@ namespace Discaster {
     
     const std::string& systemArea = iso.getMember("systemArea").stringValue();
     
-    // determine how much of the 16-sector space the provided data will fill
-    int systemAreaDataSize = systemArea.size();
-    int sectorDataSize = CdConsts::sectorDataAreaSize(currentSectorMode_);
-    int systemAreaTotalSize
-      = sectorDataSize * CdConsts::numIsoSystemAreaSectors;
-    int systemAreaLeftoverSectors
-      = (systemAreaTotalSize - systemAreaDataSize) / sectorDataSize;
-    
-    // write the provided data
-    writeData((BlackT::TByte*)systemArea.c_str(), systemArea.size());
-    
-    // pad as needed to reach 16 sectors
-    addPadSectors(systemAreaLeftoverSectors);
+    if (iso.getMemberInt("systemAreaIsRawSector") != 0) {
+      if (config.debugOutput()) {
+        std::cout << "Sector " << currentSectorNum() << ": "
+          << "Writing system area (from raw-sector data)"
+          << std::endl;
+      }
+      
+      // trust that the user will give us reasonable input...
+      TBufStream ifs;
+      ifs.write((char*)systemArea.c_str(), systemArea.size());
+      ifs.seek(0);
+      writeRawSectorData(ifs);
+    }
+    else {
+      if (config.debugOutput()) {
+        std::cout << "Sector " << currentSectorNum() << ": "
+          << "Writing system area"
+          << std::endl;
+      }
+      
+      // determine how much of the 16-sector space the provided data will fill
+      int systemAreaDataSize = systemArea.size();
+      int sectorDataSize = CdConsts::sectorDataAreaSize(currentSectorMode_);
+      int systemAreaTotalSize
+        = sectorDataSize * CdConsts::numIsoSystemAreaSectors;
+      int systemAreaLeftoverSectors
+        = (systemAreaTotalSize - systemAreaDataSize) / sectorDataSize;
+      
+      // write the provided data
+      writeData((BlackT::TByte*)systemArea.c_str(), systemArea.size());
+      
+      // pad as needed to reach 16 sectors
+      addPadSectors(systemAreaLeftoverSectors);
+    }
     
     //======================================
     // evaluate build list
