@@ -913,8 +913,13 @@ namespace Discaster {
         Object& primaryVolumeDescriptor = *jt;
         
         // update members
+//        primaryVolumeDescriptor.getMember("volumeSpaceSize")
+//          .setIntValue(getLogicalBlockSize(env, &iso, isoSize));
+        // volume space size is actually the size of the entire disc
+        // in logical blocks, not just the target iso
+        // FIXME: hardcoded logical block size of 0x800
         primaryVolumeDescriptor.getMember("volumeSpaceSize")
-          .setIntValue(getLogicalBlockSize(env, &iso, isoSize));
+          .setIntValue(currentSectorNum_);
         primaryVolumeDescriptor.getMember("rootDirectoryRecord")
           .setStringValue(rootDirRecordStr);
         
