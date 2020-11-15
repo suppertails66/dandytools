@@ -231,6 +231,9 @@ namespace Discaster {
     // we cannot know the data size without actually reading the mode off of
     // every sector.
     
+    // ATTEMPT 1: actually evaluate the size of every sector based on mode.
+    //            technically correct, but not how the original discs do it!
+    
 /*    if (config.debugOutput()) {
       std::cout << "Evaluating dataSize of raw-sector file "
         << "\"" << inputFile << "\": ";
@@ -259,8 +262,21 @@ namespace Discaster {
     if (config.debugOutput()) {
       std::cout << std::dec << fileDataSize << " bytes" << std::endl;
     } */
+    
+    // ATTEMPT 2: give up and stop caring
+    
     // ...honestly, do we even use this information?
+//    int fileDataSize = 0;
+
+    // ATTEMPT 3: get pedantic enough to figure out how actual discs do it:
+    //            just pretend all sectors are 0x800 bytes
+    
     int fileDataSize = 0;
+    {
+      TIfstream ifs(inputFile.c_str(), std::ios_base::binary);
+      fileDataSize = (ifs.size() / CdConsts::physicalSectorSize)
+                        * CdConsts::logicalSectorSize;
+    }
     
     Object newFileListing = FileListing(info.name(), false);
     newFileListing.getMember("parentPath").setStringValue(targetFolder);
