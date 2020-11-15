@@ -324,7 +324,9 @@ namespace Discaster {
       if (len < maxTransfer) {
         transferSize = len;
 //        isLastTransfer = true;
-        
+      }
+      
+      if (len <= maxTransfer) {
         if (xaEorFlagMode_ == XaSubheaderFlagModes::lastSector)
           newMode2SectorsAreEor_ = true;
         if (xaEofFlagMode_ == XaSubheaderFlagModes::lastSector)
