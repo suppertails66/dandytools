@@ -976,5 +976,6 @@ None\n\n\n#ENDSTRING()\n
 None\n\n\n#ENDSTRING()\n\n#SETALIGNMODE(NONE)\n#SETSIZE(215, 3)\n#SETERRORONOVERFLOW(0)\n\n\n
 
 - the necessary x-scale to make mednafen produce unstretched 320x240 output
-  for this game is 320/292 = 1.09589
+  for this game is 320/292 = 1.09589.
+  for 3x, 3.28767.
 

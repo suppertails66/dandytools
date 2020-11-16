@@ -6549,7 +6549,8 @@ Cancel
 #STARTSTRING(0x12385, 0x10, 0x12383, 0x232)
 
 // セーブを頼むよ。
-I want to Save.
+//I want to Save.
+I want to save.
 
 
 #ENDSTRING()
@@ -6558,7 +6559,8 @@ I want to Save.
 #STARTSTRING(0x1239E, 0x10, 0x1239C, 0x233)
 
 // ロードを頼むよ。
-I want to Load.
+//I want to Load.
+I want to load.
 
 
 #ENDSTRING()
@@ -6611,7 +6613,8 @@ Cancel
 #STARTSTRING(0x124A5, 0x10, 0x124A3, 0x238)
 
 // ロードを頼むよ。
-I want to Load.
+//I want to Load.
+I want to load.
 
 
 #ENDSTRING()
@@ -7950,7 +7953,8 @@ Do you wish to load?
 \m01
 
 // セーブデータが存在しません。
-There is no Save Data here.
+//There is no Save Data here.
+There is no save data here.
 \m00
 \w
 
@@ -8262,7 +8266,8 @@ We could not complete the formatting.
 \m01
 
 // セーブデータが壊れています。
-The Save Data is damaged.
+//The Save Data is damaged.
+The save data is damaged.
 \m00
 \w
 
@@ -16275,7 +16280,9 @@ Mamoru, that wasn't the only Enigmabot in the world.
 
 // それに備えて、\n
 // 即刻帰還しなさい！
-Come back soon.\n
+//Come back soon.\n
+//We have to prepare!
+Come back now.\n
 We have to prepare!
 \w
 \c
@@ -19772,8 +19779,10 @@ Our Shuttle Punch will send Camelon right back into the sea.
 // （恐ろしい相手だった。しかし、\n
 // 　また同じタイプのロボットが\n
 // 　あらわれないとも限らない）
+//(It was a fearsome opponent...\n
+//But we can't assume we won't be facing the same type of robot again.)
 (It was a fearsome opponent...\n
-But we can't assume we won't be facing the same type of robot again.)
+But we can't assume we'll never face the same type of robot again.)
 \w
 \c
 \v01
@@ -20504,7 +20513,7 @@ The only solution is to get in close as quickly as possible and pulverize your o
 //That's easier said than done.\n
 //The enemy is going to punch Vordan before we'd have time to react.
 That's easier said than done.\n
-This enemy is going to punch Vordan before we have time to react.
+This enemy is going to punch Vordan before I have time to react.
 \w
 \c
 
@@ -22273,7 +22282,7 @@ Nice to meet you.
 // 暮らしていたので、\n
 // 日本のことに詳しくありません。
 //Mamoru has been living overseas until recently, so he doesn't know much about Japan.
-Mamoru was living overseas until recently, so he doesn't know much about Japan.
+Mamoru lived overseas until recently, so he doesn't know much about Japan.
 \w
 \c
 \v01
@@ -22349,7 +22358,7 @@ You see, Enigmabots are―
 // 早くみんなを\n
 // 避難させた方が……。
 //Ms. Teacher, I think you'd better lead everyone to safety first!
-I think you'd better get everyone to safety first, ma'am!
+Right now, I think it's more important for you to get everyone to safety, ma'am!
 \w
 \c
 

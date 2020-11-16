@@ -4,7 +4,7 @@
 :OPEN0_0
 
   ; DEBUG
-;  jumpToMission 15
+;  jumpToMission 20
 
   queueLoad_0be    0x0 0x81
   wait_089         
