@@ -26234,7 +26234,7 @@ Simply put, the purpose of that arm is destroying buildings.
 
 // 都市を効率よく破壊するための、\n
 // オプション・ハンドでしょうね。
-An optional hand that is more effcient at causing damage to urban environments.
+An optional hand that is more efficient at causing damage to urban environments.
 \w
 \c
 
