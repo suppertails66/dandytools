@@ -169,6 +169,12 @@ void DandyScriptReader::outputNextSymbol(TStream& ifs) {
         EndiannessTypes::big, SignednessTypes::nosign);
       
       // blindly copy param chars
+      // FIXME: the \p op does not use a fixed 2-byte parameter size.
+      // this should have copied characters until a non-digit or EOF was
+      // found.
+      // too bad i didn't figure this out until the patch was already
+      // released!
+      // as a result, the \p op is broken for values higher than 99.
       currentScriptBuffer.put(ifs.get());
       currentScriptBuffer.put(ifs.get());
     }
