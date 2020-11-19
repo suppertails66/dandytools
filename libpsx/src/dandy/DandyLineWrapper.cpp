@@ -211,6 +211,8 @@ void DandyLineWrapper::afterSymbolAdded(BlackT::TStream& ifs, int key) {
       || (key == code_voice)) {
 //    ifs.seekoff(2);
     
+    // FIXME: \p does not take fixed 2-byte parameter.
+    // should instead read characters until non-digit encountered
     char first = ifs.get();
     char second = ifs.get();
     
